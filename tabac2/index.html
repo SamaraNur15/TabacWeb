@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <nav class="nav-principal">
+                    <!-- IZQUIERDA: Botón de menú -->
+                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+                    <span class="icono-menu"></span>
+                    <i class="fa-solid fa-leaf icono-hoja"></i>
+                    </button>
+                    <!-- Menú lateral -->
+                    <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+                    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+
+                    <nav class="menu-navegacion">
+                        <ul>
+                        <li><a href="/" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                        <li><a href="/PaginaPrincipal/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                        <li><a href="/menu"><i class="fa-solid fa-book-open"></i> Menu</a></li>
+                        <li><a href="/favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                        <li><a href="/quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                        <li><a href="/contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                        <li><a href="/calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                        </ul>
+                    </nav>
+                    </aside>
+
+                    <!-- Fondo desenfocado -->
+                    <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+    </nav>
+    <div class="contenedor-principal">
+        <div class="panel-izquierdo">
+            <h2>¿Ya tienes una cuenta?</h2>
+            <p>Inicia sesión para acceder a la página</p>
+            <a href="/tabac1/index.html" class="btn-blanco">Iniciar Sesión</a>
+        </div>
+
+        <div class="panel-derecho">
+            <h2>Registrarse</h2>
+            <form action="/register" method="POST">
+                <input type="text" placeholder="Nombre Completo" name="nombre" required>
+                <input type="email" placeholder="Correo Electronico" name="email" required>
+                <input type="password" placeholder="Contraseña" name="password" minlength="6" required>
+                <input type="tel" placeholder="Telefono" name="telefono" pattern="[0-9]+" required>
+                <input type="text" placeholder="Direccion de Entrega de Pedido" name="direccion" required>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+    <script src="/PaginaPrincipal/src/menu.js"></script>
+</body>
+
+</html>

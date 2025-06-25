@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Caffé Tabac</title>
+            <link rel="stylesheet" href="src/estilos.css">
+            <link rel="stylesheet" href="src/carrito.css">
+            <link rel="stylesheet" href="src/FAQAcordeon.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        </head>
+        <body>
+            <header>
+                <div class="logo">
+                        <img src="img/logo-tabac.png" alt="Logo de Caffé Tabac">
+                </div>
+                <nav class="nav-principal">
+                    <!-- IZQUIERDA: Botón de menú -->
+                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+                    <span class="icono-menu"></span>
+                    <i class="fa-solid fa-leaf icono-hoja"></i>
+                    </button>
+                    <!-- Menú lateral -->
+                    <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+                    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+
+                    <nav class="menu-navegacion">
+                        <ul>
+                        <li><a href="/" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                        <li><a href="/PaginaPrincipal/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                        <li><a href="/menu"><i class="fa-solid fa-book-open"></i> Menu</a></li>
+                        <li><a href="/favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                        <li><a href="/quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                        <li><a href="/contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                        <li><a href="/calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                        </ul>
+                    </nav>
+                    </aside>
+
+                    <!-- Fondo desenfocado -->
+                    <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+
+                    <!-- CENTRO: Barra de búsqueda -->
+                    <form class="barra-busqueda" role="search">
+                    <input type="text" placeholder="Escribe tu plato favorito" aria-label="Buscar">
+                    </form>
+
+                    <!-- DERECHA: Logo + acciones -->
+                    <div class="acciones-nav">
+                        <button class="btn-login" onclick="location.href='/tabac1/index.html'">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </button>
+                       <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+
+                        <script>
+                            document.getElementById("btn-ir-carrito").addEventListener("click", function() {
+                                window.location.href = "carrito.html";
+                            });
+                        </script>
+
+                    </div>
+                </nav>
+            </header>
+
+           
+
+            <section class="promo-banner">
+                <div class="promo-contenido">
+                    <button class="btn-ordena">ORDENA AHORA</button>
+                    <p class="promo-texto">Hasta un <strong>40% de descuento</strong></p>
+                    <p class="promo-subtexto">EN TU PRIMER PEDIDO</p>
+                </div>
+            </section>
+            <section class="metodo-pedido">
+                <h2 class="titulo-metodo">Cómo quieres hoy tu pedido</h2>
+                <div class="grid-opciones">
+                    <button class="opcion-pedido active" aria-label="Retiro en local">
+                        <span class="icono">📍</span>
+                        <span>Pedi y Retirá</span>
+                    </button>
+                    <button class="opcion-pedido" aria-label="Entrega a domicilio">
+                        <span class="icono">🛵</span>
+                        <span>Delivery</span>
+                    </button>
+                </div>
+            </section>
+            <section class="especialidades">
+                <h2 class="titulo-seccion">Especialidad de la casa</h2>
+
+                <div class="carousel-wrapper">
+                    <button class="flecha izquierda" aria-label="Anterior"><img src="img/arrow-left-circle.png" alt=""></button>
+
+                    <div class="carousel-scroll">
+                        <div class="card-producto">
+                            <img src="img/empanadas-arabes-foto.webp" alt="Empanadas Árabes">
+                            <div class="contenido-card">
+                                <h3>Empanadas Árabes</h3>
+                                <p class="precio">$10.000 <span class="precio-anterior">$12.500</span></p>
+                                <p class="descuento">20% OFF</p>
+                            </div>
+                        </div>
+
+                        <div class="card-producto">
+                            <img src="img/niños-envueltos.jpeg" alt="Niños Envueltos">
+                            <div class="contenido-card">
+                                <h3>Niños Envueltos</h3>
+                                <p class="precio">$7.920 <span class="precio-anterior">$9.000</span></p>
+                                <p class="descuento">20% OFF</p>
+                            </div>
+                        </div>
+
+                        <div class="card-producto">
+                            <img src="img/PureGarbanzo.png" alt="Porción de Hummus">
+                            <div class="contenido-card">
+                                <h3>Porción de Hummus</h3>
+                                <p class="precio">$4.680 <span class="precio-anterior">$5.200</span></p>
+                                <p class="descuento">10% OFF</p>
+                            </div>
+                        </div>
+
+                        <div class="card-producto">
+                            <img src="img/Kebab.png" alt="Kebab">
+                            <div class="contenido-card">
+                                <h3>Kebab</h3>
+                                <p class="precio">$8.820 <span class="precio-anterior">$9.800</span></p>
+                                <p class="descuento">10% OFF</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" aria-label="Siguiente"><img src="img/arrow-right-circle.png" alt=""></button>
+                </div>
+            </section>
+            <!-- Sección Postres -->
+            <section class="postres-section">
+                <h2 class="postres-titulo">Suma un toque de dulce</h2>
+
+                <div class="carrusel-postres">
+                    <button class="flecha-postre izquierda" aria-label="Anterior">
+                        <img src="img/arrow-left-circle.png" alt="Flecha izquierda">
+                    </button>
+
+                    <div class="carrusel-track-postres">
+                        <!-- Card 1 -->
+                        <div class="card-postre">
+                            <img src="img/chocotorta.jpg" alt="Chocotorta">
+                            <div class="info">
+                            <h3>Chocotorta</h3>
+                            <p class="precio">
+                                <span class="actual">$ 10.000</span>
+                                <span class="tachado">$ 12.500</span>
+                                <span class="descuento">20% OFF</span>
+                            </p>
+                            <p class="desc">Docena de empanadas arabes</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card-postre">
+                            <img src="img/ensalda-frutas.webp" alt="Ensalada de frutas">
+                            <div class="info">
+                            <h3>Ensalada de frutas</h3>
+                            <p class="precio">
+                                <span class="actual">$ 7.920</span>
+                                <span class="tachado">$ 9.000</span>
+                                <span class="descuento">20% OFF</span>
+                            </p>
+                            <p class="desc">En hoja de parra con arroz y carne.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card-postre">
+                            <img src="img/flan.jpg" alt="Flan">
+                            <div class="info">
+                            <h3>Flan</h3>
+                            <p class="precio">
+                                <span class="actual">$ 4.680</span>
+                                <span class="tachado">$ 5.200</span>
+                                <span class="descuento">10% OFF</span>
+                            </p>
+                            <p class="desc">Puré de Garbanzo</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="card-postre">
+                            <img src="img/brownie.jpg" alt="Torta Brownie">
+                            <div class="info">
+                            <h3>Torta Brownie</h3>
+                            <p class="precio">
+                                <span class="actual">$ 8.820</span>
+                                <span class="tachado">$ 9.800</span>
+                                <span class="descuento">10% OFF</span>
+                            </p>
+                            <p class="desc">Especialidad árabe con carne, perejil y cebolla.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="flecha-postre derecha" aria-label="Siguiente">
+                    <img src="img/arrow-right-circle.png" alt="Flecha derecha">
+                    </button>
+                </div>
+            </section>
+            <section class="registro-cta" aria-label="Sección de registro destacada">
+                <div class="registro-contenido">
+                    <p class="registro-texto">
+                        Regístrate y disfruta de la experiencia completa:<br>
+                        <strong>Ofertas, descuentos, compras y muchas, muchas sorpresas</strong>
+                    </p>
+                    <button class="btn-registro" onclick="window.location.href='/tabac1/index.html'">
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </section>
+    
+            <section class="faq-acordeon" aria-label="Preguntas frecuentes">
+                <h2 class="faq-titulo">¿Necesitás alguna razón más?</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">¿Qué medios de pago acepta Tabac?</summary>
+                    <p class="faq-respuesta">
+                    Aceptamos efectivo, tarjetas de crédito/débito y Mercado Pago.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">Contactanos</summary>
+                    <p class="faq-respuesta">
+                    Podés escribirnos vía WhatsApp, redes o completando el formulario de contacto.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">¿Quiénes Somos?</summary>
+                    <p class="faq-respuesta">
+                    Somos un restaurante familiar con más de 30 años de historia en San Salvador de Jujuy.
+                    </p>
+                </details>
+            </section>
+            <nav class="nav-mobile">
+                <a href="#" class="nav-mobile-item" onclick="window.location.href='/PaginaPrincipal/index.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="/favoritos" class="nav-mobile-item">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Favorite</span>
+                </a>
+                <a href="#" class="nav-mobile-item" onclick="window.location.href='carrito.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Carrito</span>
+                </a>
+
+            </nav>
+
+            <!-- Footer -->
+            <footer class="footer-tabac">
+                <div class="footer-contenido">
+                    
+                    <div class="footer-redes">
+                    <p class="footer-label">Seguinos</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/tabacjujuy/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tabac_jujuy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                    </div>
+
+                    <div class="footer-logo">
+                    <img src="img/logo-tabac.png" alt="Caffé Tabac logo">
+                    </div>
+                </div>
+
+                <p class="footer-copy">© 2025 Caffé Tabac. Todos los derechos reservados.</p>
+                <!-- WhatsApp flotante -->
+                <a href="https://wa.me/5493881234567" class="whatsapp-flotante" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <img src="img/WhatsApp.png" alt="WhatsApp">
+                </a>
+            </footer>
+
+            <script src="src/carousel.js"></script>
+            <script src="src/menu.js"></script>
+
+
+        <div id="modal-producto" class="modal-producto" hidden role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+            <div class="modal-contenido">
+            <button id="cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar modal">✕</button>
+            <h2 id="titulo-modal" class="modal-titulo">Empanadas Árabes</h2>
+        <div class="selector-cantidad">
+            <label for="cantidad" class="label-cantidad">Unidades</label>
+            <div class="input-cantidad">
+            <button id="restar" aria-label="Restar unidad">−</button>
+            <span id="cantidad">1</span>
+            <button id="sumar" aria-label="Sumar unidad">+</button>
+            </div>
+        </div>
+        <button id="btn-agregar" class="btn-agregar">
+            Agregar a mi pedido <span id="precio-total">$10.000</span>
+        </button>
+
+        </div>
+        </div>
+        <div id="modal-backdrop" class="modal-backdrop" hidden></div>
+
+        <script src="/PaginaPrincipal/src/modal.js"></script>
+
+
+    </body>
+</html>
