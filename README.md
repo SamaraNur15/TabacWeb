@@ -22,6 +22,8 @@ TabacWeb permite a los usuarios registrarse, iniciar sesión, explorar productos
 - Carrito de compras: agregar y eliminar productos
 - Interfaz de pago simulada
 
+## Figma
+https://www.figma.com/design/zxQ9fsytMHd34UmeNZz8i2/Sin-t%C3%ADtulo?node-id=0-1&t=X8WmMvDbc1POvZH6-1 
 ## Instalación
 
 1. Clonar el repositorio:
