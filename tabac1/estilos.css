@@ -16,8 +16,8 @@ body {
 
 .nav-principal {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 0.5rem 1rem;
 }
 /* ==== Estilos generales del menú lateral ==== */
