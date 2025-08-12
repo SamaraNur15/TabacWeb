@@ -14,7 +14,7 @@ function renderCarrito() {
   lista.innerHTML = "";
 
   if (carrito.length === 0) {
-    lista.innerHTML = "<p>Tu carrito está vacío. <a href='/menu'>Ir al menú</a></p>";
+    lista.innerHTML = "<p>Tu carrito está vacío. <a href='index.html'>Ir al menú</a></p>";
     document.querySelector(".resumen-carrito").style.display = "none";
     return;
   }

@@ -28,13 +28,13 @@
 
                     <nav class="menu-navegacion">
                         <ul>
-                        <li><a href="/PaginaPrincipal/index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
-                        <li><a href="/PaginaPrincipal/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
-                        <li><a href="/PaginaPrincipal/"><i class="fa-solid fa-book-open"></i> Menu</a></li>
-                        <li><a href="/favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
-                        <li><a href="/quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
-                        <li><a href="/contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
-                        <li><a href="/calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                        <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                        <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Menu</a></li>
+                        <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                        <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                        <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                        <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
                         </ul>
                     </nav>
                     </aside>
@@ -88,124 +88,43 @@
                     </button>
                 </div>
             </section>
+           <!-- ESPECIALIDADES (salado) -->
             <section class="especialidades">
-                <h2 class="titulo-seccion">Especialidad de la casa</h2>
+            <h2 class="titulo-seccion">Especialidad de la casa</h2>
 
-                <div class="carousel-wrapper">
-                    <button class="flecha izquierda" aria-label="Anterior"><img src="img/arrow-left-circle.png" alt=""></button>
+            <div class="carousel-wrapper">
+                <button class="flecha izquierda" aria-label="Anterior">
+                <img src="img/arrow-left-circle.png" alt="Anterior">
+                </button>
 
-                    <div class="carousel-scroll">
-                        <div class="card-producto">
-                            <img src="img/empanadas-arabes-foto.webp" alt="Empanadas Árabes">
-                            <div class="contenido-card">
-                                <h3>Empanadas Árabes</h3>
-                                <p class="precio">$10.000 <span class="precio-anterior">$12.500</span></p>
-                                <p class="descuento">20% OFF</p>
-                            </div>
-                        </div>
+                <div class="carousel-scroll"><!-- JS inyecta .card-producto acá --></div>
 
-                        <div class="card-producto">
-                            <img src="img/niños-envueltos.jpeg" alt="Niños Envueltos">
-                            <div class="contenido-card">
-                                <h3>Niños Envueltos</h3>
-                                <p class="precio">$7.920 <span class="precio-anterior">$9.000</span></p>
-                                <p class="descuento">20% OFF</p>
-                            </div>
-                        </div>
-
-                        <div class="card-producto">
-                            <img src="img/PureGarbanzo.png" alt="Porción de Hummus">
-                            <div class="contenido-card">
-                                <h3>Porción de Hummus</h3>
-                                <p class="precio">$4.680 <span class="precio-anterior">$5.200</span></p>
-                                <p class="descuento">10% OFF</p>
-                            </div>
-                        </div>
-
-                        <div class="card-producto">
-                            <img src="img/Kebab.png" alt="Kebab">
-                            <div class="contenido-card">
-                                <h3>Kebab</h3>
-                                <p class="precio">$8.820 <span class="precio-anterior">$9.800</span></p>
-                                <p class="descuento">10% OFF</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="flecha derecha" aria-label="Siguiente"><img src="img/arrow-right-circle.png" alt=""></button>
-                </div>
+                <button class="flecha derecha" aria-label="Siguiente">
+                <img src="img/arrow-right-circle.png" alt="Siguiente">
+                </button>
+            </div>
             </section>
-            <!-- Sección Postres -->
+
+            <!-- POSTRES (dulce) -->
             <section class="postres-section">
-                <h2 class="postres-titulo">Suma un toque de dulce</h2>
+            <h2 class="postres-titulo">Suma un toque de dulce</h2>
 
-                <div class="carrusel-postres">
-                    <button class="flecha-postre izquierda" aria-label="Anterior">
-                        <img src="img/arrow-left-circle.png" alt="Flecha izquierda">
-                    </button>
+            <div class="carrusel-postres">
+                <button class="flecha-postre izquierda" aria-label="Anterior">
+                <img src="img/arrow-left-circle.png" alt="Anterior">
+                </button>
 
-                    <div class="carrusel-track-postres">
-                        <!-- Card 1 -->
-                        <div class="card-postre">
-                            <img src="img/chocotorta.jpg" alt="Chocotorta">
-                            <div class="info">
-                            <h3>Chocotorta</h3>
-                            <p class="precio">
-                                <span class="actual">$ 10.000</span>
-                                <span class="tachado">$ 12.500</span>
-                                <span class="descuento">20% OFF</span>
-                            </p>
-                            <p class="desc">Docena de empanadas arabes</p>
-                            </div>
-                        </div>
+                <div class="carrusel-track-postres"><!-- JS inyecta .card-postre acá --></div>
 
-                        <!-- Card 2 -->
-                        <div class="card-postre">
-                            <img src="img/ensalda-frutas.webp" alt="Ensalada de frutas">
-                            <div class="info">
-                            <h3>Ensalada de frutas</h3>
-                            <p class="precio">
-                                <span class="actual">$ 7.920</span>
-                                <span class="tachado">$ 9.000</span>
-                                <span class="descuento">20% OFF</span>
-                            </p>
-                            <p class="desc">En hoja de parra con arroz y carne.</p>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="card-postre">
-                            <img src="img/flan.jpg" alt="Flan">
-                            <div class="info">
-                            <h3>Flan</h3>
-                            <p class="precio">
-                                <span class="actual">$ 4.680</span>
-                                <span class="tachado">$ 5.200</span>
-                                <span class="descuento">10% OFF</span>
-                            </p>
-                            <p class="desc">Puré de Garbanzo</p>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="card-postre">
-                            <img src="img/brownie.jpg" alt="Torta Brownie">
-                            <div class="info">
-                            <h3>Torta Brownie</h3>
-                            <p class="precio">
-                                <span class="actual">$ 8.820</span>
-                                <span class="tachado">$ 9.800</span>
-                                <span class="descuento">10% OFF</span>
-                            </p>
-                            <p class="desc">Especialidad árabe con carne, perejil y cebolla.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="flecha-postre derecha" aria-label="Siguiente">
-                    <img src="img/arrow-right-circle.png" alt="Flecha derecha">
-                    </button>
-                </div>
+                <button class="flecha-postre derecha" aria-label="Siguiente">
+                <img src="img/arrow-right-circle.png" alt="Siguiente">
+                </button>
+            </div>
             </section>
+
+            <!-- Carga el JS (no lo metas inline) -->
+            <script src="src/carrusel.js" defer></script>
+
             <section class="registro-cta" aria-label="Sección de registro destacada">
                 <div class="registro-contenido">
                     <p class="registro-texto">
@@ -243,11 +162,11 @@
                 </details>
             </section>
             <nav class="nav-mobile">
-                <a href="#" class="nav-mobile-item" onclick="window.location.href='/PaginaPrincipal/index.html'">
+                <a href="#" class="nav-mobile-item" onclick="window.location.href='index.html'">
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
-                <a href="/favoritos" class="nav-mobile-item">
+                <a href="favoritos" class="nav-mobile-item">
                     <i class="fa-regular fa-heart"></i>
                     <span>Favorite</span>
                 </a>
@@ -310,7 +229,7 @@
         </div>
         <div id="modal-backdrop" class="modal-backdrop" hidden></div>
 
-        <script src="/PaginaPrincipal/src/modal.js"></script>
+        <script src="src/modal.js"></script>
 
 
     </body>
