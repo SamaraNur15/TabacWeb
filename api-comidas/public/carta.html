@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta | Caffé Tabac</title>
+  <link rel="stylesheet" href="src/carta.css">
+  <!-- (opcional) tu hoja base con variables: colores, body, header, etc. -->
+  <!-- <link rel="stylesheet" href="styles/base.css"> -->
+  <!-- Font Awesome si ya lo usás en el proyecto -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Header existente de tu sitio (logo + nav) -->
+  <header class="header-site">
+    <nav class="nav-principal">
+      <button class="btn-menu" aria-label="Abrir carta">
+        <span class="icono-menu"></span>
+        <i class="fa-solid fa-leaf icono-hoja"></i>
+      </button>
+      <div class="acciones-nav">
+        <button class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</button>
+        <button class="btn-carrito" aria-label="Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero de la carta -->
+    <section class="hero-carta">
+      <div class="container">
+        <h1 class="hero-carta__title">Nuestra carta</h1>
+        <p class="hero-carta__sub">Sabores árabes, clásicos de la casa y postres para cerrar perfecto.</p>
+      </div>
+    </section>
+
+    <!-- Filtros / controles (listo para JS) -->
+    <section class="toolbar-carta">
+      <div class="container toolbar-carta__content">
+        <div class="chips">
+          <button class="chip is-active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="salado">Salado</button>
+          <button class="chip" data-filter="dulce">Dulce</button>
+          <button class="chip" data-filter="bebidas">Bebidas</button>
+          <button class="chip" data-filter="vegetariano">Vegetariano</button>
+          <button class="chip" data-filter="picante">Picante</button>
+        </div>
+        <div class="orden">
+          <label for="ordenar">Ordenar</label>
+          <select id="ordenar">
+            <option value="recomendados">Recomendados</option>
+            <option value="precio_asc">Precio: menor a mayor</option>
+            <option value="precio_desc">Precio: mayor a menor</option>
+            <option value="calificacion">Mejor calificados</option>
+            <option value="tiempo">Más rápidos</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección SALADOS -->
+    <section class="bloque-categoria" id="salado">
+      <div class="container">
+        <h2 class="titulo-seccion">Especialidades saladas</h2>
+
+        <div class="grid-carta" id="grid-salado">
+          <!-- Card de ejemplo: estos nodos luego los podés generar por JS con tus datos -->
+          <article class="card-producto"
+            data-id="101"
+            data-codigo="SAL-001"
+            data-nombre="Keppe al horno"
+            data-url_amigable="keppe-al-horno"
+            data-categoria="salado"
+            data-imagen="img/platos/keppe.jpg"
+            data-precio="6500"
+            data-moneda="ARS"
+            data-precio_anterior="7200"
+            data-porcentaje_descuento="10"
+            data-descripcion="Trigo burgol con carne y especias, horneado. Textura crocante por fuera y suave por dentro."
+            data-unidad="porción"
+            data-apto_vegetariano="false"
+            data-picante="true"
+            data-alergenos="gluten"
+            data-etiquetas="árabe,horno,kibbeh"
+            data-stock="18"
+            data-disponible="true"
+            data-tiempo_preparacion_min="15"
+            data-calificacion="4.6"
+            data-cantidad_resenas="128"
+            data-entrega-retiro_en_local="true"
+            data-entrega-envio_a_domicilio="true"
+            data-fecha_creacion="2025-07-01T12:00:00Z"
+            data-fecha_actualizacion="2025-08-08T18:00:00Z">
+            
+            <div class="card-media">
+              <img src="img/platos/keppe.jpg" alt="Keppe al horno">
+              <div class="badges-top">
+                <span class="badge badge-desc">-10%</span>
+                <span class="badge badge-spicy" title="Picante">🌶</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Keppe al horno</h3>
+              <p class="card-desc">Trigo burgol con carne y especias, horneado.</p>
+
+              <div class="card-meta">
+                <div class="precio-wrap">
+                  <span class="precio">$6.500 <small>ARS</small></span>
+                  <span class="precio-anterior">$7.200</span>
+                </div>
+                <div class="rating" aria-label="Calificación 4.6 de 5">★ 4.6 <span class="reviews">(128)</span></div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Horno</span>
+                <span class="tag">Árabe</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="disponibilidad">
+                <i class="fa-solid fa-store"></i> Retiro
+                <i class="fa-solid fa-motorcycle"></i> Delivery
+                <span class="dot-sep"></span>
+                <i class="fa-regular fa-clock"></i> 15'
+              </div>
+              <button class="btn-add" type="button">
+                <i class="fa-solid fa-plus"></i> Agregar
+              </button>
+            </div>
+          </article>
+
+          <!-- Repetí/inyectá más artículos salados aquí -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección DULCES -->
+    <section class="bloque-categoria" id="dulce">
+      <div class="container">
+        <h2 class="titulo-seccion">Un toque de dulce</h2>
+
+        <div class="grid-carta" id="grid-dulce">
+          <article class="card-producto"
+            data-id="202"
+            data-codigo="DUL-004"
+            data-nombre="Baklava"
+            data-url_amigable="baklava"
+            data-categoria="dulce"
+            data-imagen="img/platos/baklava.jpg"
+            data-precio="4800"
+            data-moneda="ARS"
+            data-precio_anterior="0"
+            data-porcentaje_descuento="0"
+            data-descripcion="Capas de masa filo, nueces y almíbar perfumado."
+            data-unidad="porción"
+            data-apto_vegetariano="true"
+            data-picante="false"
+            data-alergenos="gluten,frutos secos"
+            data-etiquetas="árabe,postre,nueces"
+            data-stock="9"
+            data-disponible="true"
+            data-tiempo_preparacion_min="5"
+            data-calificacion="4.8"
+            data-cantidad_resenas="201"
+            data-entrega-retiro_en_local="true"
+            data-entrega-envio_a_domicilio="true"
+            data-fecha_creacion="2025-06-21T14:30:00Z"
+            data-fecha_actualizacion="2025-08-08T18:00:00Z">
+            
+            <div class="card-media">
+              <img src="img/platos/baklava.jpg" alt="Baklava">
+              <div class="badges-top">
+                <span class="badge badge-veg" title="Apto vegetariano">🌱</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Baklava</h3>
+              <p class="card-desc">Capas de masa filo, nueces y almíbar.</p>
+
+              <div class="card-meta">
+                <div class="precio-wrap">
+                  <span class="precio">$4.800 <small>ARS</small></span>
+                </div>
+                <div class="rating" aria-label="Calificación 4.8 de 5">★ 4.8 <span class="reviews">(201)</span></div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Frutos secos</span>
+                <span class="tag">Dulce</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="disponibilidad">
+                <i class="fa-solid fa-store"></i> Retiro
+                <i class="fa-solid fa-motorcycle"></i> Delivery
+                <span class="dot-sep"></span>
+                <i class="fa-regular fa-clock"></i> 5'
+              </div>
+              <button class="btn-add" type="button">
+                <i class="fa-solid fa-plus"></i> Agregar
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-site">
+    <div class="container">
+      <p>© Caffé Tabac — Hecho con ❤️ en Jujuy</p>
+    </div>
+  </footer>
+
+  <!-- Tu JS podrá leer los data-* y poblar/actualizar dinámicamente -->
+  <!-- <script src="src/carta.js" defer></script> -->
+</body>
+</html>

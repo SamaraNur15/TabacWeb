@@ -18,19 +18,19 @@
                 </div>
                 <nav class="nav-principal">
                     <!-- IZQUIERDA: Botón de menú -->
-                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
                     <span class="icono-menu"></span>
                     <i class="fa-solid fa-leaf icono-hoja"></i>
                     </button>
                     <!-- Menú lateral -->
                     <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
-                    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+                    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
 
                     <nav class="menu-navegacion">
                         <ul>
                         <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
                         <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
-                        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Menu</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
                         <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
                         <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
                         <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
@@ -41,11 +41,6 @@
 
                     <!-- Fondo desenfocado -->
                     <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
-
-                    <!-- CENTRO: Barra de búsqueda -->
-                    <form class="barra-busqueda" role="search">
-                    <input type="text" placeholder="Escribe tu plato favorito" aria-label="Buscar">
-                    </form>
 
                     <!-- DERECHA: Logo + acciones -->
                     <div class="acciones-nav">
@@ -71,7 +66,7 @@
             <section class="promo-banner">
                 <div class="promo-contenido">
                     <button class="btn-ordena">ORDENA AHORA</button>
-                    <p class="promo-texto">Hasta un <strong>40% de descuento</strong></p>
+                    <p class="promo-texto">Hasta un <strong>10% de descuento</strong></p>
                     <p class="promo-subtexto">EN TU PRIMER PEDIDO</p>
                 </div>
             </section>
@@ -88,43 +83,34 @@
                     </button>
                 </div>
             </section>
-           <!-- ESPECIALIDADES (salado) -->
-            <section class="especialidades">
-            <h2 class="titulo-seccion">Especialidad de la casa</h2>
+            <!-- Sección: Ir a la carta -->
+            <section class="cta-carta">
+            <!-- Fondo con collage de imágenes -->
+                <div class="cta-carta__bg" aria-hidden="true">
+                    <img src="img/Kebab.png" alt="">
+                    <img src="img/niños-envueltos.jpeg" alt="">
+                    <img src="img/empanadas-arabes-foto.webp" alt="">
+                    <img src="img/lomito2.jpg" alt="">
+                    <img src="img/pizza.jpeg" alt="">
+                    <img src="img/chocotorta.jpg" alt="">
+                </div>
 
-            <div class="carousel-wrapper">
-                <button class="flecha izquierda" aria-label="Anterior">
-                <img src="img/arrow-left-circle.png" alt="Anterior">
-                </button>
-
-                <div class="carousel-scroll"><!-- JS inyecta .card-producto acá --></div>
-
-                <button class="flecha derecha" aria-label="Siguiente">
-                <img src="img/arrow-right-circle.png" alt="Siguiente">
-                </button>
-            </div>
+                <div class="container">
+                    <div class="cta-carta__content">
+                        <span class="cta-carta__tag">ORDENÁ AHORA</span>
+                        <h2 class="cta-carta__title">Descubrí nuestra carta</h2>
+                        <p class="cta-carta__sub">
+                            Platos árabes, especialidades de la casa y opciones para todos los gustos.
+                        </p>
+                        <div class="cta-carta__acciones">
+                            <a href="carta.html" class="btn-cta-carta" aria-label="Ver la carta completa">
+                            Ver la carta
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </section>
-
-            <!-- POSTRES (dulce) -->
-            <section class="postres-section">
-            <h2 class="postres-titulo">Suma un toque de dulce</h2>
-
-            <div class="carrusel-postres">
-                <button class="flecha-postre izquierda" aria-label="Anterior">
-                <img src="img/arrow-left-circle.png" alt="Anterior">
-                </button>
-
-                <div class="carrusel-track-postres"><!-- JS inyecta .card-postre acá --></div>
-
-                <button class="flecha-postre derecha" aria-label="Siguiente">
-                <img src="img/arrow-right-circle.png" alt="Siguiente">
-                </button>
-            </div>
-            </section>
-
-            <!-- Carga el JS (no lo metas inline) -->
-            <script src="src/carrusel.js" defer></script>
-
+            <!--registro-->
             <section class="registro-cta" aria-label="Sección de registro destacada">
                 <div class="registro-contenido">
                     <p class="registro-texto">

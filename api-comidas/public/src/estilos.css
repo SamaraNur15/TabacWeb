@@ -32,7 +32,7 @@ header {
 }
 
 .logo img {
-  height: 200px;
+  height: 250px;
 }
 
 .container {
@@ -42,9 +42,9 @@ header {
 }
 
 .nav-principal {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
   gap: 1rem;
   width: 100%;
   padding: 0.5rem 1rem;
@@ -133,7 +133,7 @@ header {
   cursor: pointer;
   padding: 0.5rem;
   transform: scale(1.4);
-  margin: 1rem
+  
 }
 
 /* Icono hamburguesa (3 líneas) */
@@ -168,7 +168,7 @@ header {
 /* Icono hoja */
 .icono-hoja {
   color: #f3b12a;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 
 /* ======== Barra de búsqueda ======== */
@@ -208,21 +208,21 @@ header {
   cursor: pointer;
 }
 .btn-login:hover {
-  background-color: #72fc9c;
+  background-color: #ffffff;
   color: #180d0d;
 }
 
 .btn-carrito {
-  background-color: #72fc9c;
+  background-color: #f87001;
   color: rgb(255, 255, 255);
   font-weight: bold;
   border: none;
-  padding: 0.5rem 0.9rem;
+  padding: 0.9rem 1.5rem;
   border-radius: 6px;
   cursor: pointer;
 }
 .btn-carrito:hover {
-  background-color: #72fc9c;
+  background-color: #ffffff;
   color: #180d0d;
 }
 
@@ -342,208 +342,122 @@ header {
 .icono {
   font-size: 1.2rem;
 }
-/* ====== Especialidades ====== */
-.especialidades {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
-.titulo-seccion {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: white;
-  text-align: center;
-}
-
-.carousel-wrapper {
+/* ---------- Sección: Ir a la carta (fondo con imágenes) ---------- */
+.cta-carta{
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.carousel-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  scrollbar-width: none; /* Firefox */
-}
-.carousel-scroll::-webkit-scrollbar {
-  display: none;
-}
-/* ====== flechas carrusel ====== */
-.flecha {
-  background: #1a1a1a;
-  color: white;
-  font-size: 2rem;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 6px;
-  z-index: 2;
-}
-.flecha.izquierda img,
-.flecha.derecha img {
-  width: 40px;
-  height: 40px;
-}
-
-
-.card-producto {
-  background-color: #1e1e1e;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
+  background: var(--fondo-oscuro);
+  padding: clamp(28px, 6vw, 72px) 0;
+  margin: clamp(32px, 5vw, 96px) 0;
 }
 
-.card-producto img {
+/* Capa de imágenes en mosaico */
+.cta-carta__bg{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 6px;
+  transform: scale(1.03);          /* cubre bien los bordes */
+  z-index: 0;
+}
+.cta-carta__bg img{
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
+  filter: saturate(1.05) contrast(0.95);
+  opacity: 0.6;                    /* “un poco transparente” */
 }
 
-.contenido-card {
-  padding: 1rem;
-  color: white;
+/* Velo para darle protagonismo al texto (oscurece suavemente) */
+.cta-carta::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);     /* ajustá .35–.55 según gusto */
+  z-index: 0;
 }
 
-.contenido-card h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-
-.precio {
-  margin: 0;
-  font-weight: bold;
-}
-
-.precio-anterior {
-  color: #aaa;
-  text-decoration: line-through;
-  font-weight: normal;
-  margin-left: 0.5rem;
-}
-
-.descuento {
-  background-color: #1b9c59;
-  color: white;
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-/* ====== Carrusel de postres ====== */
-/* ====== Postres ====== */
-.postres-section {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.postres-titulo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: white;
-  text-align: center;
-}
-
-.carrusel-postres {
+/* Contenido por encima del fondo */
+.cta-carta__content{
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  z-index: 1;
+  text-align: center;
+  color: var(--texto-claro);
+  padding: clamp(20px, 4vw, 40px);
+  border-radius: 14px;
+  /* leve vidrio para integrarse al estilo */
+  background: rgba(0, 0, 0, 0.233);
+  border: 1px solid rgba(255, 255, 255, 0.274);
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
 }
 
-.carrusel-track-postres {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  scrollbar-width: none; /* Firefox */
-}
-.carrusel-track-postres::-webkit-scrollbar {
-  display: none;
-}
-
-/* ====== flechas carrusel postres ====== */
-.flecha-postre {
-  background: #1a1a1a;
-  color: white;
-  font-size: 2rem;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 6px;
-  z-index: 2;
-}
-.flecha-postre img {
-  width: 40px;
-  height: 40px;
-}
-
-/* ====== card postre ====== */
-.card-postre {
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-postre img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.info {
-  padding: 1rem;
-  color: white;
-}
-
-.info h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-
-.precio {
-  margin: 0;
-  font-weight: bold;
-}
-
-.tachado {
-  color: #aaa;
-  text-decoration: line-through;
-  font-weight: normal;
-  margin-left: 0.5rem;
-}
-
-.descuento {
-  background-color: #1b9c59;
-  color: white;
+/* Chip superior */
+.cta-carta__tag{
   display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  margin-bottom: 12px;
 }
 
-.desc {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  color: #ccc;
+/* Título y subtítulo */
+.cta-carta__title{
+  margin: 0 0 .35rem 0;
+  font-size: clamp(2rem, 3.8vw, 2rem);
+  line-height: 1.2;
+}
+.cta-carta__sub{
+  margin: 0 auto clamp(16px, 3vw, 28px);
+  max-width: 52ch;
+  opacity: .9;
+  margin-top: 1rem;
 }
 
+/* Acciones */
+.cta-carta__acciones{
+  display: inline-flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Botón principal */
+.btn-cta-carta{
+  background: #72fc9c;
+  color: #180d0d;
+  font-weight: 700;
+  text-decoration: none;
+  padding: .7rem 1.5rem;
+  border-radius: 8px;
+  display: inline-block;
+  border: 0;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-cta-carta:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(114,252,156,.25);
+}
+
+/* Botón secundario */
+.btn-cta-outline{
+  background: transparent;
+  color: #ffffff;
+  text-decoration: none;
+  padding: .68rem 1.05rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.35);
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
+}
+.btn-cta-outline:hover{
+  background: rgba(0,0,0,.18);
+  border-color: rgba(255,255,255,.6);
+  transform: translateY(-1px);
+}
 /* ====== Franja de Registro Destacada ====== */
 .registro-cta {
   background: linear-gradient(to right, #8B1B23, #F26E22); /* degradado rojo-anaranjado */
