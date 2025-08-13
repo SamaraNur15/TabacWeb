@@ -13,19 +13,50 @@
 <body>
 
   <!-- Header existente de tu sitio (logo + nav) -->
-  <header class="header-site">
-    <nav class="nav-principal">
-      <button class="btn-menu" aria-label="Abrir carta">
-        <span class="icono-menu"></span>
-        <i class="fa-solid fa-leaf icono-hoja"></i>
-      </button>
-      <div class="acciones-nav">
-        <button class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</button>
-        <button class="btn-carrito" aria-label="Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
-      </div>
-    </nav>
-  </header>
+  <nav class="nav-principal">
+    <!-- IZQUIERDA: Botón de menú -->
+    <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
+    <span class="icono-menu"></span>
+    <i class="fa-solid fa-leaf icono-hoja"></i>
+    </button>
+    <!-- Menú lateral -->
+    <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
 
+    <nav class="menu-navegacion">
+        <ul>
+        <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+        <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+        <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+        <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+        <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+        <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+        </ul>
+    </nav>
+    </aside>
+
+    <!-- Fondo desenfocado -->
+    <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+
+    <!-- DERECHA: Logo + acciones -->
+    <div class="acciones-nav">
+        <button class="btn-login" href='tabac1/index.html'>
+            <a href="tabac1/index.html" class="btn-login">Iniciar Sesión</a>
+        </button>
+
+        <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+
+        <script>
+            document.getElementById("btn-ir-carrito").addEventListener("click", function() {
+                window.location.href = "carrito.html";
+            });
+        </script>
+
+    </div>
+  </nav>
   <main>
     <!-- Hero de la carta -->
     <section class="hero-carta">
@@ -94,7 +125,7 @@
             data-fecha_actualizacion="2025-08-08T18:00:00Z">
             
             <div class="card-media">
-              <img src="img/platos/keppe.jpg" alt="Keppe al horno">
+              <img src="img/Kebab.png" alt="Keppe al horno">
               <div class="badges-top">
                 <span class="badge badge-desc">-10%</span>
                 <span class="badge badge-spicy" title="Picante">🌶</span>
@@ -171,7 +202,7 @@
             data-fecha_actualizacion="2025-08-08T18:00:00Z">
             
             <div class="card-media">
-              <img src="img/platos/baklava.jpg" alt="Baklava">
+              <img src="img/baklava.jpg" alt="Baklava">
               <div class="badges-top">
                 <span class="badge badge-veg" title="Apto vegetariano">🌱</span>
               </div>
@@ -219,5 +250,7 @@
 
   <!-- Tu JS podrá leer los data-* y poblar/actualizar dinámicamente -->
   <!-- <script src="src/carta.js" defer></script> -->
+  <script src="src/carousel.js"></script>
+  <script src="src/menu.js"></script>
 </body>
 </html>

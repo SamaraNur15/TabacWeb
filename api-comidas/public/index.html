@@ -30,7 +30,7 @@
                         <ul>
                         <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
                         <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
-                        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+                        <li><a href="carta.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
                         <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
                         <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
                         <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
@@ -44,9 +44,10 @@
 
                     <!-- DERECHA: Logo + acciones -->
                     <div class="acciones-nav">
-                        <button class="btn-login" onclick="location.href='/tabac1/index.html'">
-                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        <button class="btn-login" href='tabac1/index.html'>
+                            <a href="tabac1/index.html" class="btn-login">Iniciar Sesión</a>
                         </button>
+                        
                        <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
@@ -65,7 +66,7 @@
 
             <section class="promo-banner">
                 <div class="promo-contenido">
-                    <button class="btn-ordena">ORDENA AHORA</button>
+                    <a href="carta.html" class="btn-ordena">ORDENA AHORA</a>
                     <p class="promo-texto">Hasta un <strong>10% de descuento</strong></p>
                     <p class="promo-subtexto">EN TU PRIMER PEDIDO</p>
                 </div>
@@ -117,9 +118,10 @@
                         Regístrate y disfruta de la experiencia completa:<br>
                         <strong>Ofertas, descuentos, compras y muchas, muchas sorpresas</strong>
                     </p>
-                    <button class="btn-registro" onclick="window.location.href='/tabac1/index.html'">
-                        Iniciar Sesión
+                    <button class="btn-registro">
+                        <a href="tabac1/index.html" class="btn-registro">Iniciar Sesión</a>
                     </button>
+                    
                 </div>
             </section>
     
@@ -191,8 +193,7 @@
                 </a>
             </footer>
 
-            <script src="src/carousel.js"></script>
-            <script src="src/menu.js"></script>
+
 
 
         <div id="modal-producto" class="modal-producto" hidden role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
@@ -216,7 +217,8 @@
         <div id="modal-backdrop" class="modal-backdrop" hidden></div>
 
         <script src="src/modal.js"></script>
-
+        <script src="src/carousel.js"></script>
+        <script src="src/menu.js"></script>
 
     </body>
 </html>

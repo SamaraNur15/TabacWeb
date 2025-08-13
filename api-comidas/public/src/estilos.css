@@ -251,22 +251,26 @@ header {
 }
 
 .btn-ordena {
+  display: inline-block;
   background-color: white;
   color: #7c1c1c;
   font-weight: 600;
-  border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   margin-bottom: 1rem;
   font-size: 0.75rem;
   cursor: pointer;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* 👈 sombra agregada */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   transition: background-color 0.3s, color 0.3s;
+  text-decoration: none; /* quita el subrayado */
+  border: none; /* evita borde si algún navegador lo agrega */
 }
+
 .btn-ordena:hover {
   background-color: #7c1c1c;
   color: #ffffff;
 }
+
 .promo-texto {
   font-size: 1.8rem;
   font-weight: bold;
@@ -313,7 +317,7 @@ header {
 }
 
 .opcion-pedido {
-  background-color: #f6eff8;
+  background-color: #f8f3e9;
   border: 2px solid transparent;
   padding: 1rem;
   border-radius: 8px;
@@ -329,14 +333,14 @@ header {
 }
 
 .opcion-pedido:hover {
-  border-color: #7c1c1c;
+  border-color: #141111;
   transform: scale(1.05); /* agranda suavemente */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombra sutil */
 }
 
 .opcion-pedido.active {
-  border-color: #7c1c1c;
-  background-color: #fff8f1;
+  border-color: #0e0d0d;
+  background-color: #f8f3e9;
 }
 
 .icono {
