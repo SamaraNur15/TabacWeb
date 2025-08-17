@@ -44,8 +44,8 @@
 
                     <!-- DERECHA: Logo + acciones -->
                     <div class="acciones-nav">
-                        <button class="btn-login" href='tabac1/index.html'>
-                            <a href="tabac1/index.html" class="btn-login">Iniciar Sesión</a>
+                        <button class="btn-login" href='Iniciar Sesion/index.html'>
+                            <a href="Iniciar Sesion/index.html" class="btn-login">Iniciar Sesión</a>
                         </button>
                         
                        <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
@@ -71,19 +71,7 @@
                     <p class="promo-subtexto">EN TU PRIMER PEDIDO</p>
                 </div>
             </section>
-            <section class="metodo-pedido">
-                <h2 class="titulo-metodo">Cómo quieres hoy tu pedido</h2>
-                <div class="grid-opciones">
-                    <button class="opcion-pedido active" aria-label="Retiro en local">
-                        <span class="icono">📍</span>
-                        <span>Pedi y Retirá</span>
-                    </button>
-                    <button class="opcion-pedido" aria-label="Entrega a domicilio">
-                        <span class="icono">🛵</span>
-                        <span>Delivery</span>
-                    </button>
-                </div>
-            </section>
+            
             <!-- Sección: Ir a la carta -->
             <section class="cta-carta">
             <!-- Fondo con collage de imágenes -->
@@ -119,44 +107,58 @@
                         <strong>Ofertas, descuentos, compras y muchas, muchas sorpresas</strong>
                     </p>
                     <button class="btn-registro">
-                        <a href="tabac1/index.html" class="btn-registro">Iniciar Sesión</a>
+                        <a href="Iniciar Sesion/index.html" class="btn-registro">Iniciar Sesión</a>
                     </button>
                     
                 </div>
             </section>
-    
+            <!--Seccion Preguntas frecuentes-->
             <section class="faq-acordeon" aria-label="Preguntas frecuentes">
                 <h2 class="faq-titulo">¿Necesitás alguna razón más?</h2>
 
                 <details class="faq-item">
                     <summary class="faq-pregunta">¿Qué medios de pago acepta Tabac?</summary>
-                    <p class="faq-respuesta">
-                    Aceptamos efectivo, tarjetas de crédito/débito y Mercado Pago.
-                    </p>
+                    <div class="faq-respuesta">
+                        Aceptamos efectivo, tarjetas de crédito/débito y Mercado Pago.
+                    </div>
                 </details>
 
                 <details class="faq-item">
                     <summary class="faq-pregunta">Contactanos</summary>
-                    <p class="faq-respuesta">
-                    Podés escribirnos vía WhatsApp, redes o completando el formulario de contacto.
-                    </p>
+                    <div class="faq-respuesta">
+                        Podés escribirnos vía WhatsApp, redes o completando el formulario de contacto.
+                    </div>
                 </details>
 
                 <details class="faq-item">
                     <summary class="faq-pregunta">¿Quiénes Somos?</summary>
-                    <p class="faq-respuesta">
-                    Somos un restaurante familiar con más de 30 años de historia en San Salvador de Jujuy.
-                    </p>
+                    <div class="faq-respuesta">
+                        <p>
+                            Somos <strong>Tabac</strong>, un restaurante familiar con más de 30 años de historia en San Salvador de Jujuy, dedicado a ofrecer lo mejor de la gastronomía árabe y regional. 
+                        </p>
+                        <p>
+                            Desde nuestros inicios, mantenemos viva una tradición que combina recetas transmitidas de generación en generación con un toque moderno que nos permite innovar sin perder nuestra esencia. Nuestro compromiso es brindar no solo platos auténticos y sabrosos, sino también un espacio cálido y acogedor donde cada visita se convierte en una experiencia única.
+                        </p>
+                        <p>
+                            Creemos en la importancia de la <em>calidad</em>, la <em>hospitalidad</em> y el <em>respeto por nuestras raíces</em>. Por eso seleccionamos cuidadosamente cada ingrediente y trabajamos con un equipo apasionado que comparte la misma visión: que cada cliente se sienta como en casa.
+                        </p>
+                        <p>
+                            Hoy, Tabac es más que un restaurante: es un punto de encuentro donde familias, amigos y visitantes pueden disfrutar de buena comida, un ambiente agradable y la calidez que nos caracteriza.
+                        </p>
+                    </div>
                 </details>
+
             </section>
+
+
             <nav class="nav-mobile">
                 <a href="#" class="nav-mobile-item" onclick="window.location.href='index.html'">
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
-                <a href="favoritos" class="nav-mobile-item">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>Favorite</span>
+                <a href="carta.html" class="nav-mobile-item">
+                    <i class="fa-solid fa-book-open"></i></i>
+                    <span>Carta</span>
                 </a>
                 <a href="#" class="nav-mobile-item" onclick="window.location.href='carrito.html'">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -219,6 +221,7 @@
         <script src="src/modal.js"></script>
         <script src="src/carousel.js"></script>
         <script src="src/menu.js"></script>
+        <script src="src/Acordeon.js"></script>
 
     </body>
 </html>
