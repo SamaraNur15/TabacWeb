@@ -7,58 +7,64 @@
             <link rel="stylesheet" href="src/estilos.css">
             <link rel="stylesheet" href="src/carrito.css">
             <link rel="stylesheet" href="src/FAQAcordeon.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
         </head>
         <body>
             <header>
-                <div class="logo">
-                        <img src="img/logo-tabac.png" alt="Logo de Caffé Tabac">
-                </div>
+                
                 <nav class="nav-principal">
-                    <!-- IZQUIERDA: Botón de menú -->
-                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
-                    <span class="icono-menu"></span>
-                    <i class="fa-solid fa-leaf icono-hoja"></i>
+                    <!-- IZQUIERDA: botón menú + link Carta -->
+                    <div class="nav-izq">
+                    <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+                        <span class="icono-menu"></span>
+                        <i class="fa-solid fa-leaf icono-hoja"></i>
                     </button>
                     <!-- Menú lateral -->
                     <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
-                    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
+                        <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
 
-                    <nav class="menu-navegacion">
-                        <ul>
-                        <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
-                        <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
-                        <li><a href="carta.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
-                        <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
-                        <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
-                        <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
-                        <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
-                        </ul>
-                    </nav>
+                        <nav class="menu-navegacion">
+                            <ul>
+                            <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                            <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                            <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+                            <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                            <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                            <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                            <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                            </ul>
+                        </nav>
                     </aside>
-
                     <!-- Fondo desenfocado -->
                     <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
 
-                    <!-- DERECHA: Logo + acciones -->
-                    <div class="acciones-nav">
-                        <button class="btn-login" href='Iniciar Sesion/index.html'>
-                            <a href="Iniciar Sesion/index.html" class="btn-login">Iniciar Sesión</a>
-                        </button>
-                        
-                       <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-
-                        <script>
-                            document.getElementById("btn-ir-carrito").addEventListener("click", function() {
-                                window.location.href = "carrito.html";
-                            });
-                        </script>
-
+                    <a href="carta.html" class="nav-carta">Carta</a>
                     </div>
+
+                    <!-- CENTRO: logo -->
+                    <div class="logo-nav">
+                    <img src="img/logo-tabac.png" alt="Logo de Caffé Tabac">
+                    </div>
+
+                    <!-- DERECHA: acciones -->
+                    <div class="acciones-nav">
+                    <button class="btn-login" href="Iniciar Sesion/index.html">
+                        <a href="Iniciar Sesion/index.html" class="btn-login">Iniciar Sesión</a>
+                    </button>
+
+                    <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+
+                    <script>
+                        document.getElementById("btn-ir-carrito").addEventListener("click", function() {
+                        window.location.href = "carrito.html";
+                        });
+                    </script>
+                    </div>
+
                 </nav>
             </header>
 
@@ -175,10 +181,10 @@
                     <p class="footer-label">Seguinos</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/tabacjujuy/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fab fa-facebook"></i>
                         </a>
                         <a href="https://www.instagram.com/tabac_jujuy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                     </div>
@@ -222,6 +228,7 @@
         <script src="src/carousel.js"></script>
         <script src="src/menu.js"></script>
         <script src="src/Acordeon.js"></script>
+        <script src="src/movimientos.js"></script>
 
     </body>
 </html>

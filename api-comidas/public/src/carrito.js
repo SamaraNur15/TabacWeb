@@ -14,10 +14,27 @@ function renderCarrito() {
   lista.innerHTML = "";
 
   if (carrito.length === 0) {
-    lista.innerHTML = "<p>Tu carrito está vacío. <a href='carta.html'>Ir a la carta</a></p>";
-    document.querySelector(".resumen-carrito").style.display = "none";
-    return;
-  }
+  lista.innerHTML = `
+    <div class="carrito-vacio" role="status" aria-live="polite">
+      <div class="carrito-vacio__icono" aria-hidden="true">🛒</div>
+      <h3 class="carrito-vacio__titulo">Tu carrito está vacío</h3>
+      <p class="carrito-vacio__texto">
+        ¿Seguimos con antojo? Descubrí nuestras especialidades y volvé con algo rico.
+      </p>
+      <a href="carta.html" class="btn-cta-carta" aria-label="Ir a la carta">
+        Ver la Carta
+      </a>
+      <div class="carrito-vacio__tips">
+        <span>• Envíos rápidos</span>
+        <span>• Descuentos por cantidad</span>
+        <span>• Preparación al momento</span>
+      </div>
+    </div>
+  `;
+  const resumen = document.querySelector(".resumen-carrito");
+  if (resumen) resumen.style.display = "none";
+  return;
+}
 
   let subtotal = 0;
   let descuento = 0;
