@@ -338,18 +338,60 @@ header {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(5, 1fr); /* desktop “normal”: 5 columnas fijas */
   gap: 6px;
   transform: scale(1.03);          /* cubre bien los bordes */
   z-index: 0;
+  overflow: hidden;
 }
+
 .cta-carta__bg img{
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: saturate(1.05) contrast(0.95);
   opacity: 0.6;                    /* “un poco transparente” */
 }
+/* ===== Pantallas grandes (6 imágenes) ===== */
+@media (min-width: 1200px){
+  .cta-carta__bg{
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cta-carta__bg img:nth-child(-n+6){ display: block; }
+}
+
+/* ===== Ultra anchas (7 imágenes) ===== */
+@media (min-width: 1800px){
+  .cta-carta__bg{
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .cta-carta__bg img:nth-child(-n+7){ display: block; }
+}
+
+/* ===== Laptops chicas (4 imágenes) ===== */
+@media (max-width: 1199px){
+  .cta-carta__bg{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cta-carta__bg img:nth-child(-n+4){ display: block; }
+}
+
+/* ===== Tablet (3), móvil (2 y 1) ===== */
+@media (max-width: 991px){
+  .cta-carta__bg{ grid-template-columns: repeat(3, 1fr); }
+  .cta-carta__bg img:nth-child(-n+6){ display: block; }
+}
+@media (max-width: 767px){
+  .cta-carta__bg{ grid-template-columns: repeat(2, 1fr); }
+  .cta-carta__bg img:nth-child(-n+2){ display: block; }
+}
+@media (max-width: 479px){
+  .cta-carta__bg{ grid-template-columns: 1fr; }
+  .cta-carta__bg img:nth-child(1){ display: block; }
+}
+
 
 /* Velo para darle protagonismo al texto (oscurece suavemente) */
 .cta-carta::after{
