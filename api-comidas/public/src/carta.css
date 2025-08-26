@@ -27,6 +27,40 @@ html,body{ margin:0; padding:0; background:var(--fondo-oscuro); color:var(--text
   margin-top: 50px;
 }
 
+.nav-izq {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-inicio {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+  margin-left: 2.5rem;
+  background-color: #611717;
+
+  animation: shake 0.6s ease-in-out infinite;
+  animation-delay: 5s;         /* empieza a los 5 segundos */
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+.nav-inicio.shake {
+  animation: shake 0.8s ease-in-out;
+}
+.logo-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 🔹 Logo dentro de la navbar */
+.logo-nav img {
+  height: 200px; /* más pequeño para alinear con botones */
+}
 
 /* ==== Estilos generales del menú lateral ==== */
 .menu-lateral {
@@ -289,6 +323,11 @@ html,body{ margin:0; padding:0; background:var(--fondo-oscuro); color:var(--text
   background:#13241a; border:1px solid #19311f; padding:.2rem .5rem; border-radius:999px;
 }
 
+/* ======== Navegación móvil ======== */
+.nav-mobile {
+  display: none; /* Oculto por defecto */
+}
+
 /* footer de la card */
 .card-footer{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -308,6 +347,45 @@ html,body{ margin:0; padding:0; background:var(--fondo-oscuro); color:var(--text
 .footer-site .container{ padding:18px 16px; color:var(--texto-sec); font-size:.95rem; text-align:center; }
 
 /* ====== Responsivo ====== */
+@media(max-width: 768px){
+  .nav-principal {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .nav-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #7a1414;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0;
+    z-index: 999;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  }
+  .nav-mobile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-mobile-item i {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .nav-mobile-item:hover {
+    color: #ff7c00;
+  }
+}
 @media (max-width:560px){
   .orden{ width:100%; justify-content:flex-start; }
   .titulo-seccion{ font-size:1.25rem; }

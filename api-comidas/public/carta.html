@@ -15,30 +15,36 @@
   <!-- Header existente de tu sitio (logo + nav) -->
   <nav class="nav-principal">
     <!-- IZQUIERDA: Botón de menú -->
-    <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
-      <span class="icono-menu"></span>
-      <i class="fa-solid fa-leaf icono-hoja"></i>
-    </button>
-    <!-- Menú lateral -->
-    <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
-    <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
+    <div class="nav-izq">
+      <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
+        <span class="icono-menu"></span>
+        <i class="fa-solid fa-leaf icono-hoja"></i>
+      </button>
+      <!-- Menú lateral -->
+      <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+      <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
 
-    <nav class="menu-navegacion">
-        <ul>
-        <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
-        <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
-        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
-        <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
-        <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
-        <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
-        <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
-        </ul>
-    </nav>
-    </aside>
+      <nav class="menu-navegacion">
+          <ul>
+          <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+          <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+          <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+          <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+          <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+          <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+          <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+          </ul>
+      </nav>
+      </aside>
 
-    <!-- Fondo desenfocado -->
-    <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
-
+      <!-- Fondo desenfocado -->
+      <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+      
+      <a href="index.html" class="nav-inicio"><span class="icono-casa"><i class="fa-solid fa-house"></i></span>
+        Inicio 
+      </a>
+                      
+    </div>
     <!-- DERECHA: Logo + acciones -->
     <div class="acciones-nav">
         <button class="btn-login" href='Iniciar Sesion/index.html'>
@@ -241,6 +247,22 @@
       </div>
     </section>
   </main>
+
+<!--SECCION MOVIL-->
+  <nav class="nav-mobile">
+    <a href="#" class="nav-mobile-item" onclick="window.location.href='index.html'">
+        <i class="fa-solid fa-house"></i>
+        <span>Inicio</span>
+    </a>
+    <a href="carta.html" class="nav-mobile-item">
+        <i class="fa-solid fa-book-open"></i></i>
+        <span>Carta</span>
+    </a>
+    <a href="#" class="nav-mobile-item" onclick="window.location.href='carrito.html'">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Carrito</span>
+    </a>
+</nav>
 
   <footer class="footer-site">
     <div class="container">
