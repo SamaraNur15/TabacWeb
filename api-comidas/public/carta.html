@@ -47,9 +47,7 @@
     </div>
     <!-- DERECHA: Logo + acciones -->
     <div class="acciones-nav">
-        <button class="btn-login" href='Iniciar Sesion/index.html'>
-            <a href="Iniciar Sesion/index.html" class="btn-login">Iniciar Sesión</a>
-        </button>
+        <a class="btn-login" href="Iniciar Sesion/index.html">Iniciar Sesión</a>
 
         <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
             <i class="fas fa-shopping-cart"></i>
@@ -75,14 +73,21 @@
     <!-- Filtros / controles (listo para JS) -->
     <section class="toolbar-carta">
       <div class="container toolbar-carta__content">
-        <div class="chips">
-          <button class="chip is-active" data-filter="todos">Todos</button>
-          <button class="chip" data-filter="salado">Salado</button>
-          <button class="chip" data-filter="dulce">Dulce</button>
-          <button class="chip" data-filter="bebidas">Bebidas</button>
-          <button class="chip" data-filter="vegetariano">Vegetariano</button>
-          <button class="chip" data-filter="picante">Picante</button>
+        <button class="chips-nav chips-prev" aria-label="Categorías anteriores">‹</button>
+
+        <div class="chips" role="tablist" aria-label="Categorías">
+          <button class="chip is-active" role="tab" aria-selected="true" data-filter="todos">
+            <i class="fa-solid fa-layer-group"></i> Todos
+          </button>
+          <button class="chip" role="tab" data-filter="salado"><i class="fa-solid fa-bowl-food"></i> Salado</button>
+          <button class="chip" role="tab" data-filter="dulce"><i class="fa-solid fa-ice-cream"></i> Dulce</button>
+          <button class="chip" role="tab" data-filter="bebidas"><i class="fa-solid fa-mug-hot"></i> Bebidas</button>
+          <button class="chip" role="tab" data-filter="vegetariano"><i class="fa-solid fa-seedling"></i> Vegetariano</button>
+          <button class="chip" role="tab" data-filter="picante"><i class="fa-solid fa-pepper-hot"></i> Picante</button>
         </div>
+
+        <button class="chips-nav chips-next" aria-label="Categorías siguientes">›</button>
+
         <div class="orden">
           <label for="ordenar">Ordenar</label>
           <select id="ordenar">
@@ -274,5 +279,6 @@
   <!-- <script src="src/carta.js" defer></script> -->
   <script src="src/carousel.js"></script>
   <script src="src/menu.js"></script>
+  <script src="src/categorias.js"></script>
 </body>
 </html>
