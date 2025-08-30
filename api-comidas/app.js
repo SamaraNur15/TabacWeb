@@ -1,7 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+// lee el .env que está al lado de app.js, sin importar desde dónde ejecutes node
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
+console.log('DEBUG ENV MONGO_URI:', process.env.MONGO_URI);
+console.log('DEBUG ENV MONGO_DB:', process.env.MONGO_DB);
 const connectDB = require('./config/database');
 
 const app = express();
@@ -13,7 +17,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-const path = require('path');
+
 
 // Archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Home
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'carta.html'));
 });
 
 

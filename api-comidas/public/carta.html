@@ -10,6 +10,7 @@
   <!-- Font Awesome si ya lo usás en el proyecto -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
+
 <body>
 
   <!-- Header existente de tu sitio (logo + nav) -->
@@ -108,72 +109,7 @@
 
         <div class="grid-carta" id="grid-salado">
           <!-- Card de ejemplo: estos nodos luego los podés generar por JS con tus datos -->
-          <article class="card-producto"
-            data-id="101"
-            data-codigo="SAL-001"
-            data-nombre="Keppe al horno"
-            data-url_amigable="keppe-al-horno"
-            data-categoria="salado"
-            data-imagen="img/platos/keppe.jpg"
-            data-precio="6500"
-            data-moneda="ARS"
-            data-precio_anterior="7200"
-            data-porcentaje_descuento="10"
-            data-descripcion="Trigo burgol con carne y especias, horneado. Textura crocante por fuera y suave por dentro."
-            data-unidad="porción"
-            data-apto_vegetariano="false"
-            data-picante="true"
-            data-alergenos="gluten"
-            data-etiquetas="árabe,horno,kibbeh"
-            data-stock="18"
-            data-disponible="true"
-            data-tiempo_preparacion_min="15"
-            data-calificacion="4.6"
-            data-cantidad_resenas="128"
-            data-entrega-retiro_en_local="true"
-            data-entrega-envio_a_domicilio="true"
-            data-fecha_creacion="2025-07-01T12:00:00Z"
-            data-fecha_actualizacion="2025-08-08T18:00:00Z">
-            
-            <div class="card-media">
-              <img src="img/Kebab.png" alt="Keppe al horno">
-              <div class="badges-top">
-                <span class="badge badge-desc">-10%</span>
-                <span class="badge badge-spicy" title="Picante">🌶</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Keppe al horno</h3>
-              <p class="card-desc">Trigo burgol con carne y especias, horneado.</p>
-
-              <div class="card-meta">
-                <div class="precio-wrap">
-                  <span class="precio">$6.500 <small>ARS</small></span>
-                  <span class="precio-anterior">$7.200</span>
-                </div>
-                <div class="rating" aria-label="Calificación 4.6 de 5">★ 4.6 <span class="reviews">(128)</span></div>
-              </div>
-
-              <div class="tags">
-                <span class="tag">Horno</span>
-                <span class="tag">Árabe</span>
-              </div>
-            </div>
-
-            <div class="card-footer">
-              <div class="disponibilidad">
-                <i class="fa-solid fa-store"></i> Retiro
-                <i class="fa-solid fa-motorcycle"></i> Delivery
-                <span class="dot-sep"></span>
-                <i class="fa-regular fa-clock"></i> 15'
-              </div>
-              <button class="btn-add" type="button">
-                <i class="fa-solid fa-plus"></i> Agregar
-              </button>
-            </div>
-          </article>
-
+          <article class="card-producto"></article>
           <!-- Repetí/inyectá más artículos salados aquí -->
         </div>
       </div>
@@ -185,74 +121,18 @@
         <h2 class="titulo-seccion">Un toque de dulce</h2>
 
         <div class="grid-carta" id="grid-dulce">
-          <article class="card-producto"
-            data-id="202"
-            data-codigo="DUL-004"
-            data-nombre="Baklava"
-            data-url_amigable="baklava"
-            data-categoria="dulce"
-            data-imagen="img/platos/baklava.jpg"
-            data-precio="4800"
-            data-moneda="ARS"
-            data-precio_anterior="0"
-            data-porcentaje_descuento="0"
-            data-descripcion="Capas de masa filo, nueces y almíbar perfumado."
-            data-unidad="porción"
-            data-apto_vegetariano="true"
-            data-picante="false"
-            data-alergenos="gluten,frutos secos"
-            data-etiquetas="árabe,postre,nueces"
-            data-stock="9"
-            data-disponible="true"
-            data-tiempo_preparacion_min="5"
-            data-calificacion="4.8"
-            data-cantidad_resenas="201"
-            data-entrega-retiro_en_local="true"
-            data-entrega-envio_a_domicilio="true"
-            data-fecha_creacion="2025-06-21T14:30:00Z"
-            data-fecha_actualizacion="2025-08-08T18:00:00Z">
-            
-            <div class="card-media">
-              <img src="img/baklava.jpg" alt="Baklava">
-              <div class="badges-top">
-                <span class="badge badge-veg" title="Apto vegetariano">🌱</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Baklava</h3>
-              <p class="card-desc">Capas de masa filo, nueces y almíbar.</p>
-
-              <div class="card-meta">
-                <div class="precio-wrap">
-                  <span class="precio">$4.800 <small>ARS</small></span>
-                </div>
-                <div class="rating" aria-label="Calificación 4.8 de 5">★ 4.8 <span class="reviews">(201)</span></div>
-              </div>
-
-              <div class="tags">
-                <span class="tag">Frutos secos</span>
-                <span class="tag">Dulce</span>
-              </div>
-            </div>
-
-            <div class="card-footer">
-              <div class="disponibilidad">
-                <i class="fa-solid fa-store"></i> Retiro
-                <i class="fa-solid fa-motorcycle"></i> Delivery
-                <span class="dot-sep"></span>
-                <i class="fa-regular fa-clock"></i> 5'
-              </div>
-              <button class="btn-add" type="button">
-                <i class="fa-solid fa-plus"></i> Agregar
-              </button>
-            </div>
-          </article>
+          <article class="card-producto"></article>
         </div>
       </div>
     </section>
   </main>
-
+<!-- Sección BEBIDAS -->
+<section class="bloque-categoria" id="bebidas">
+  <div class="container">
+    <h2 class="titulo-seccion">Bebidas</h2>
+    <div class="grid-carta" id="grid-bebidas"></div>
+  </div>
+</section>
 <!--SECCION MOVIL-->
   <nav class="nav-mobile">
     <a href="#" class="nav-mobile-item" onclick="window.location.href='index.html'">
@@ -277,8 +157,10 @@
 
   <!-- Tu JS podrá leer los data-* y poblar/actualizar dinámicamente -->
   <!-- <script src="src/carta.js" defer></script> -->
-  <script src="src/carousel.js"></script>
+  <script src="src/carrusel.js"></script>
   <script src="src/menu.js"></script>
   <script src="src/categorias.js"></script>
+  <script src="src/carta.api.js" defer></script>
+  <script src="src/Acordeon.js"></script>
 </body>
 </html>

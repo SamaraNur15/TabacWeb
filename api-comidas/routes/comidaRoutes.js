@@ -18,8 +18,8 @@ router.get('/', asyncH(async (req, res) => {
 // GET por categoría
 router.get('/categoria/:cat', asyncH(async (req, res) => {
   const cat = String(req.params.cat).toLowerCase();
-  if (!['dulce', 'salado'].includes(cat)) {
-    return res.status(400).json({ error: 'Categoría inválida. Usa "dulce" o "salado".' });
+  if (!['dulce', 'salado', 'bebidas'].includes(cat)) {
+    return res.status(400).json({ error: 'Categoría inválida. Usa "dulce", "salado" o "bebidas".' });
   }
   const items = await Comida.find({ categoria: cat }).lean();
   res.json(items);
@@ -45,14 +45,14 @@ router.get('/:id', asyncH(async (req, res) => {
 router.post('/', asyncH(async (req, res) => {
   const payload = { ...req.body };
 
-  if (!payload.nombre || !payload.categoria || typeof payload.precio !== 'number') {
+ if (!payload.nombre || !payload.categoria || typeof payload.precio !== 'number') {
     return res.status(400).json({
-      error: 'Campos requeridos: nombre (string), categoria ("dulce"|"salado"), precio (number)'
+      error: 'Campos requeridos: nombre (string), categoria ("dulce"|"salado"|"bebidas"), precio (number)'
     });
   }
   payload.categoria = String(payload.categoria).toLowerCase();
-  if (!['dulce', 'salado'].includes(payload.categoria)) {
-    return res.status(400).json({ error: 'categoria debe ser "dulce" o "salado"' });
+  if (!['dulce', 'salado', 'bebidas'].includes(payload.categoria)) {
+    return res.status(400).json({ error: 'categoria debe ser "dulce", "salado" o "bebidas"' });
   }
 
   const created = await Comida.create(payload);
@@ -80,8 +80,8 @@ router.put('/:id', asyncH(async (req, res) => {
   ];
   for (const k of allowed) if (k in req.body) doc[k] = req.body[k];
 
-  if (doc.categoria && !['dulce', 'salado'].includes(String(doc.categoria).toLowerCase())) {
-    return res.status(400).json({ error: 'categoria debe ser "dulce" o "salado"' });
+  if (doc.categoria && !['dulce', 'salado', 'bebidas'].includes(String(doc.categoria).toLowerCase())) {
+  return res.status(400).json({ error: 'categoria debe ser "dulce", "salado" o "bebidas"' });
   }
 
   await doc.save();

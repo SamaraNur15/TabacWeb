@@ -15,7 +15,12 @@ const ComidasSchema = new mongoose.Schema(
     codigo: { type: String, unique: true, sparse: true, index: true }, // SKU
     nombre: { type: String, required: true, trim: true },
     url_amigable: { type: String, unique: true, sparse: true, index: true },
-    categoria: { type: String, required: true, enum: ['dulce', 'salado'], index: true },
+    categoria: { 
+      type: String, 
+      required: true, 
+      enum: ['dulce', 'salado', 'bebidas'], // 👈 agregamos bebidas
+      index: true 
+    },
 
     imagen: { type: String, default: null },
     precio: { type: Number, required: true, min: 0 },
