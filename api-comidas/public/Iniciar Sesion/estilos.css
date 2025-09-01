@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.nav-principal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.5rem 1rem;
+}
+/* ==== Estilos generales del menú lateral ==== */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 250px;
+  height: 100%;
+  background-color: #7c1c1c;
+  color: white;
+  padding: 2rem 1rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.menu-lateral.abierto {
+  left: 0;
+}
+
+/* ==== Botón cerrar dentro del menú ==== */
+.btn-cerrar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* ==== Navegación del menú ==== */
+.menu-navegacion ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.menu-navegacion li {
+  margin-bottom: 1.2rem;
+}
+
+.menu-navegacion a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s, padding-left 0.3s;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.menu-navegacion a:hover,
+.menu-navegacion a.activo {
+  background-color: #611717;
+  padding-left: 1rem;
+}
+
+/* ==== Fondo desenfocado cuando el menú está abierto ==== */
+.fondo-oscuro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* ======== Estilos de botones ======== */
+.btn-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transform: scale(1.4);
+  margin: 1rem
+}
+
+/* Icono hamburguesa (3 líneas) */
+.icono-menu {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background-color: #f2f2f2;
+  position: relative;
+  margin-left: 2rem;
+}
+
+.icono-menu::before,
+.icono-menu::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background-color: #f2f2f2;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.icono-menu::before {
+  top: -6px;
+}
+
+.icono-menu::after {
+  top: 6px;
+}
+
+/* Icono hoja */
+.icono-hoja {
+  color: #f3b12a;
+  font-size: 1.4rem;
+}
+.contenedor-principal {
+    display: flex;
+    flex-direction: row;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.login-box,
+.registro-box {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-box {
+    background-color: #2c2c2c;
+    flex: 1;
+    min-width: 300px;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-box input {
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.login-box button {
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #891717;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registro-box {
+    background-color: #891717;
+    flex: 1;
+    color: #fff;
+    min-width: 300px;
+}
+
+.registro-box h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.registro-box p {
+    margin-bottom: 20px;
+}
+
+.btn-registrarse {
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.btn-registrarse:hover {
+    background-color: #a72828;
+}
+
+
+/* Responsivo */
+
+@media screen and (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-box,
+    .registro-box {
+        width: 100%;
+        text-align: center;
+    }
+}
