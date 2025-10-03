@@ -1,0 +1,40 @@
+### Home (devuelve carta.html)
+GET http://localhost:3000/
+
+### Probar si la API está funcionando
+GET http://localhost:3000/
+
+### Obtener todas las comidas
+GET http://localhost:3000/api/comidas
+
+### Obtener comidas por categoría
+GET http://localhost:3000/api/comidas/categoria/salado
+GET http://localhost:3000/api/comidas/categoria/dulce
+GET http://localhost:3000/api/comidas/categoria/bebidas
+
+### Obtener una comida por id/codigo/url_amigable
+GET http://localhost:3000/api/comidas/{id}
+
+### Crear una comida
+POST http://localhost:3000/api/comidas
+Content-Type: application/json
+
+{
+  "nombre": "Pizza",
+  "categoria": "salado",
+  "precio": 8000,
+  "descripcion": "Pizza casera",
+  "apto_vegetariano": true
+}
+
+### Actualizar una comida
+PUT http://localhost:3000/api/comidas/{id}
+Content-Type: application/json
+
+{
+  "precio": 9000,
+  "descripcion": "Pizza casera mejorada"
+}
+
+### Eliminar una comida
+DELETE http://localhost:3000/api/comidas/{id}

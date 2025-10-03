@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Caffé Tabac</title>
+            <link rel="stylesheet" href="src/estilos.css">
+            <link rel="stylesheet" href="src/carrito.css">
+            <link rel="stylesheet" href="src/FAQAcordeon.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+        </head>
+        <body>
+            <header>
+                
+                <nav class="nav-principal">
+                    <!-- IZQUIERDA: botón menú + link Carta -->
+                    <div class="nav-izq">
+                        <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+                            <span class="icono-menu"></span>
+                            <i class="fa-solid fa-leaf icono-hoja"></i>
+                        </button>
+                        <!-- Menú lateral -->
+                        <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+                            <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
+
+                            <nav class="menu-navegacion">
+                                <ul>
+                                <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                                <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                                <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+                                <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                                <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                                <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                                <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                                </ul>
+                            </nav>
+                        </aside>
+                        <!-- Fondo desenfocado -->
+                        <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+
+                        <a href="carta.html" class="nav-carta">Carta</a>
+                    </div>
+
+                    <!-- CENTRO: logo -->
+                    <div class="logo-nav">
+                        <img src="img/logo-tabac.png" alt="Logo de Caffé Tabac">
+                        </div>
+
+                        <!-- DERECHA: acciones -->
+                        <div class="acciones-nav">
+                        <button class="btn-login" href="Iniciar Sesion/index.html">
+                            <a href="Iniciar Sesion/index.html" class="btn-login">Iniciar Sesión</a>
+                        </button>
+
+                        <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+
+                        <script>
+                            document.getElementById("btn-ir-carrito").addEventListener("click", function() {
+                            window.location.href = "carrito.html";
+                            });
+                        </script>
+                    </div>
+
+                </nav>
+            </header>
+
+           
+
+            <section class="promo-banner">
+                <div class="promo-contenido">
+                    <a href="carta.html" class="btn-ordena">ORDENA AHORA</a>
+                    <p class="promo-texto">Hasta un <strong>10% de descuento</strong></p>
+                    <p class="promo-subtexto">EN TU PRIMER PEDIDO</p>
+                </div>
+            </section>
+            
+            <!-- Sección: Ir a la carta -->
+            <section class="cta-carta">
+            <!-- Fondo con collage de imágenes -->
+                <div class="cta-carta__bg" aria-hidden="true">
+                    <img src="img/Kebab.png" alt="">
+                    <img src="img/niños-envueltos.jpeg" alt="">
+                    <img src="img/empanadas-arabes-foto.webp" alt="">
+                    <img src="img/lomito2.jpg" alt="">
+                    <img src="img/pizza.jpeg" alt="">
+                    <img src="img/chocotorta.jpg" alt="">
+                    <img src="img/hamburguesas-caseras.webp" alt="">
+                    <img src="img/baklava.jpg" alt="">
+                </div>
+
+                <div class="container">
+                    <div class="cta-carta__content">
+                        <span class="cta-carta__tag">ORDENÁ AHORA</span>
+                        <h2 class="cta-carta__title">Descubrí nuestra carta</h2>
+                        <p class="cta-carta__sub">
+                            Platos árabes, especialidades de la casa y opciones para todos los gustos.
+                        </p>
+                        <div class="cta-carta__acciones">
+                            <a href="carta.html" class="btn-cta-carta" aria-label="Ver la carta completa">
+                            Ver la carta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--registro-->
+            <section class="registro-cta" aria-label="Sección de registro destacada">
+                <div class="registro-contenido">
+                    <p class="registro-texto">
+                        Regístrate y disfruta de la experiencia completa:<br>
+                        <strong>Ofertas, descuentos, compras y muchas, muchas sorpresas</strong>
+                    </p>
+                    <button class="btn-registro">
+                        <a href="Iniciar Sesion/index.html" class="btn-registro">Iniciar Sesión</a>
+                    </button>
+                    
+                </div>
+            </section>
+            <!--Seccion Preguntas frecuentes-->
+            <section class="faq-acordeon" aria-label="Preguntas frecuentes">
+                <h2 class="faq-titulo">¿Necesitás alguna razón más?</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">¿Qué medios de pago acepta Tabac?</summary>
+                    <div class="faq-respuesta">
+                        Aceptamos efectivo, tarjetas de crédito/débito y Mercado Pago.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">Contactanos</summary>
+                    <div class="faq-respuesta">
+                        Podés escribirnos vía WhatsApp, redes o completando el formulario de contacto.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-pregunta">¿Quiénes Somos?</summary>
+                    <div class="faq-respuesta">
+                        <p>
+                            Somos <strong>Tabac</strong>, un restaurante familiar con más de 30 años de historia en San Salvador de Jujuy, dedicado a ofrecer lo mejor de la gastronomía árabe y regional. 
+                        </p>
+                        <p>
+                            Desde nuestros inicios, mantenemos viva una tradición que combina recetas transmitidas de generación en generación con un toque moderno que nos permite innovar sin perder nuestra esencia. Nuestro compromiso es brindar no solo platos auténticos y sabrosos, sino también un espacio cálido y acogedor donde cada visita se convierte en una experiencia única.
+                        </p>
+                        <p>
+                            Creemos en la importancia de la <em>calidad</em>, la <em>hospitalidad</em> y el <em>respeto por nuestras raíces</em>. Por eso seleccionamos cuidadosamente cada ingrediente y trabajamos con un equipo apasionado que comparte la misma visión: que cada cliente se sienta como en casa.
+                        </p>
+                        <p>
+                            Hoy, Tabac es más que un restaurante: es un punto de encuentro donde familias, amigos y visitantes pueden disfrutar de buena comida, un ambiente agradable y la calidez que nos caracteriza.
+                        </p>
+                    </div>
+                </details>
+
+            </section>
+
+
+            <nav class="nav-mobile">
+                <a href="#" class="nav-mobile-item" onclick="window.location.href='index.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="carta.html" class="nav-mobile-item">
+                    <i class="fa-solid fa-book-open"></i></i>
+                    <span>Carta</span>
+                </a>
+                <a href="#" class="nav-mobile-item" onclick="window.location.href='carrito.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Carrito</span>
+                </a>
+
+            </nav>
+
+            <!-- Footer -->
+            <footer class="footer-tabac">
+                <div class="footer-contenido">
+                    
+                    <div class="footer-redes">
+                    <p class="footer-label">Seguinos</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/tabacjujuy/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tabac_jujuy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    </div>
+
+                    <div class="footer-logo">
+                    <img src="img/logo-tabac.png" alt="Caffé Tabac logo">
+                    </div>
+                </div>
+
+                <p class="footer-copy">© 2025 Caffé Tabac. Todos los derechos reservados.</p>
+                <!-- WhatsApp flotante -->
+                <a href="https://wa.me/5493881234567" class="whatsapp-flotante" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <img src="img/WhatsApp.png" alt="WhatsApp">
+                </a>
+            </footer>
+
+
+
+
+        <div id="modal-producto" class="modal-producto" hidden role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+            <div class="modal-contenido">
+            <button id="cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar modal">✕</button>
+            <h2 id="titulo-modal" class="modal-titulo">Empanadas Árabes</h2>
+        <div class="selector-cantidad">
+            <label for="cantidad" class="label-cantidad">Unidades</label>
+            <div class="input-cantidad">
+            <button id="restar" aria-label="Restar unidad">−</button>
+            <span id="cantidad">1</span>
+            <button id="sumar" aria-label="Sumar unidad">+</button>
+            </div>
+        </div>
+        <button id="btn-agregar" class="btn-agregar">
+            Agregar a mi pedido <span id="precio-total">$10.000</span>
+        </button>
+
+        </div>
+        </div>
+        <div id="modal-backdrop" class="modal-backdrop" hidden></div>
+
+        <script src="src/modal.js"></script>
+        <script src="src/carousel.js"></script>
+        <script src="src/menu.js"></script>
+        <script src="src/Acordeon.js"></script>
+        <script src="src/movimientos.js"></script>
+
+    </body>
+</html>
