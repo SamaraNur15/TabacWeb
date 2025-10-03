@@ -25,22 +25,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Home
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'carta.html'));
+    res.sendFile(path.join(__dirname, 'public', 'carta.html'));
 });
 
 
 
 // Rutas
 const comidaRoutes = require('./routes/comidaRoutes'); // <- nombre correcto
-app.use('/api/comidas', comidaRoutes);                 // <- montar el router acá
+app.use('/api/comidas', comidaRoutes); // <- montar el router acá
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send('API Tabac Web funcionando 🚀');
+    res.send('API Tabac Web funcionando 🚀');
 });
 
 // Arranque del servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🟢 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`🟢 Servidor corriendo en http://localhost:${PORT}`);
+});
+
+app.get("/api/products", async(req, res) => {
+    try {
+        const productos = await require("./models/comida").find();
+        res.json(productos);
+    } catch (err) {
+        console.error("Error obteniendo productos:", err);
+        res.status(500).json({ error: "Error al obtener productos" });
+    }
 });
