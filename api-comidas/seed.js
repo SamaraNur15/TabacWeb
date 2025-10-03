@@ -107,7 +107,7 @@ async function runSeed() {
         nombre: 'Agua Mineral 500ml',
         categoria: 'bebidas',
         precio: 1000,
-        imagen: '/img/agua.jpg',
+        imagen: '/api-comidas/public/img/agua.png',
         descripcion: 'Agua mineral sin gas, botella de 500ml.',
         apto_vegetariano: true,
         stock: 60,
