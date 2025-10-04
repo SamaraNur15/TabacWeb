@@ -22,9 +22,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Rutas de API
 const authRoutes = require('./routes/authRoutes');
 const comidaRoutes = require('./routes/comidaRoutes');
+const carritoRoutes = require('./routes/carritoRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/comidas', comidaRoutes);
+app.use('/api/carrito', carritoRoutes);
 
 // Página inicial (productos)
 app.get('/', (req, res) => {

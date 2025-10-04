@@ -88,6 +88,16 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.totals-row{
+  display:flex;
+  align-items:baseline;
+  gap:.5rem;              /* espacio entre “Envío” y la nota */
+}
+.totals-row .value{
+  margin-left:auto;       /* empuja el precio a la derecha como los demás */
+  font-weight:600;
+}
+.muted{ opacity:.7; }
 .btn-metodo.active {
   background-color: #ff7c00;
   color: black;
@@ -169,6 +179,43 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   margin: 1.25rem;
 }
+/* Tarjeta del carrito */
+.cart-card{
+  display:grid;
+  grid-template-columns: 80px 1fr auto;
+  gap:14px;
+  padding:16px 18px;
+  background:#2b2b2b;
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+  align-items:center;
+}
+.cart-card + .cart-card{ margin-top:12px; }
+
+.cart-thumb{
+  width:80px; height:80px; object-fit:cover;
+  border-radius:12px; background:#111;
+}
+
+.cart-title{ margin:0 0 6px; font-weight:700; font-size:1.05rem; }
+.cart-meta{ margin:0 0 8px; color:#cfcfcf; font-size:.95rem; }
+
+.cart-price{ font-weight:700; font-size:1.1rem; text-align:right; min-width:90px; }
+
+.controls{ display:flex; align-items:center; gap:10px; }
+.qty{ display:inline-flex; align-items:center; border:1px solid #3a3a3a; background:#1e1e1e; border-radius:10px; overflow:hidden; }
+.qty input{ width:56px; padding:6px 8px; background:transparent; border:0; color:#fff; text-align:center; font-weight:600; }
+.qty button{ width:36px; height:32px; border:0; background:#333; color:#fff; cursor:pointer; }
+.qty button:hover{ background:#444; }
+
+.btn-remove{ color:#ff5c5c; background:transparent; border:0; cursor:pointer; font-weight:600; }
+.btn-remove:hover{ color:#ff7777; text-decoration:underline; }
+
+@media (max-width:640px){
+  .cart-card{ grid-template-columns:64px 1fr; }
+  .cart-price{ grid-column:2 / -1; text-align:left; margin-top:6px; }
+}
+
 
 /* Efecto sutil de pulso para llamar la atención */
 @keyframes pulse-soft {

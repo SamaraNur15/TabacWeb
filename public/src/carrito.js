@@ -1,149 +1,220 @@
-const lista = document.getElementById("lista-carrito");
-const subtotalEl = document.getElementById("subtotal");
-const descuentosEl = document.getElementById("descuentos");
-const totalEl = document.getElementById("total");
-const btnRetirar = document.getElementById("btn-retirar");
-const btnDelivery = document.getElementById("btn-delivery");
-const btnFinalizar = document.getElementById("finalizar-pedido");
+// public/src/carrito.js
+// --- user id compartido (no re-declarar getUserId para evitar loops)
+const getUID = () => {
+  const fn = window.getUserId;
+  if (typeof fn === 'function') return fn();
+  let saved = localStorage.getItem('userId');
+  if (saved) return saved;
+  const nuevo = 'anon-1';
+  localStorage.setItem('userId', nuevo);
+  return nuevo;
+};
 
-// Estado
-let metodoEntrega = "retirar";
+const API_BASE = '/api/carrito';
 
-// Helpers de carrito
-function getCart() {
-  try { return JSON.parse(localStorage.getItem("carrito")) || []; }
-  catch { return []; }
+// ---- DOM ----
+const listaCarrito = document.getElementById('lista-carrito');
+const subtotalEl   = document.getElementById('subtotal');
+const descuentosEl = document.getElementById('descuentos');
+const totalEl      = document.getElementById('total');
+const btnRetirar   = document.getElementById('btn-retirar');
+const btnDelivery  = document.getElementById('btn-delivery');
+const deliveryEl     = document.getElementById('delivery');
+const deliveryNoteEl = document.getElementById('delivery-note');
+
+// ---- Cliente API ----
+async function apiGetCart() {
+  const r = await fetch(`${API_BASE}/${encodeURIComponent(getUID())}`);
+  if (!r.ok) throw new Error(`GET cart ${r.status}`);
+  return r.json();
 }
-function saveCart(c) {
-  localStorage.setItem("carrito", JSON.stringify(c));
-}
-function normalizeCart(arr) {
-  return (arr || []).map(p => ({
-    ...p,
-    precio: Number(p.precio || 0),
-    cantidad: Number(p.cantidad || 1),
-    imagen: p.imagen || "/img/placeholder.png",
-    descripcion: p.descripcion || ""
-  }));
-}
-function resolveImgPath(src) {
-  const s = String(src || '').trim();
-  if (!s) return '/img/placeholder.png';
-  if (s.startsWith('http') || s.startsWith('/')) return s;
-  return '/img/' + s;
-}
-
-// ÚNICA inicialización del carrito
-let carrito = normalizeCart(getCart()).map(p => ({
-  ...p,
-  imagen: resolveImgPath(p.imagen)
-}));
-saveCart(carrito); // guardo normalizado por si había datos viejos
-
-saveCart(carrito);
-// Renderiza carrito
-function renderCarrito() {
-  lista.innerHTML = "";
-
-  if (carrito.length === 0) {
-    lista.innerHTML = `
-      <div class="carrito-vacio" role="status" aria-live="polite">
-        <div class="carrito-vacio__icono" aria-hidden="true">🛒</div>
-        <h3 class="carrito-vacio__titulo">Tu carrito está vacío</h3>
-        <p class="carrito-vacio__texto">
-          ¿Seguimos con antojo? Descubrí nuestras especialidades y volvé con algo rico.
-        </p>
-        <a href="carta.html" class="btn-cta-carta" aria-label="Ir a la carta">
-          Ver la Carta
-        </a>
-        <div class="carrito-vacio__tips">
-          <span>• Envíos rápidos</span>
-          <span>• Descuentos por cantidad</span>
-          <span>• Preparación al momento</span>
-        </div>
-      </div>
-    `;
-    const resumen = document.querySelector(".resumen-carrito");
-    if (resumen) resumen.style.display = "none";
-    return;
-  }
-
-
-  let subtotal = 0;
-  let descuento = 0;
-
-  // dentro de renderCarrito() -> en el forEach
-  carrito.forEach((item, index) => {
-    const precio   = Number(item.precio || 0);    // <— fuerza número
-    const cantidad = Number(item.cantidad || 1);  // <— fuerza número
-
-    subtotal += precio * cantidad;
-    if (cantidad >= 2) descuento += precio * cantidad * 0.2;
-
-    const div = document.createElement("div");
-    div.className = "item-carrito";
-    div.innerHTML = `
-      <img src="${resolveImgPath(item.imagen)}" alt="${item.nombre || ""}">
-      <div class="item-info">
-        <h3>${item.nombre || ""}</h3>
-        <p>${item.descripcion || ""}</p>
-        <p class="precio-item">$${precio.toLocaleString("es-AR")}</p>  <!-- usa 'precio' -->
-      </div>
-      <div class="controles-cantidad">
-        <button data-i="${index}" class="menos">−</button>
-        <span>${cantidad}</span>
-        <button data-i="${index}" class="mas">+</button>
-      </div>
-      <button class="btn-eliminar" data-i="${index}">Eliminar</button>
-    `;
-    lista.appendChild(div);
+async function apiUpdateItem(itemId, cantidad) {
+  const r = await fetch(`${API_BASE}/${encodeURIComponent(getUID())}/items/${encodeURIComponent(itemId)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cantidad: Number(cantidad) })
   });
-
-
-  subtotalEl.textContent   = `$${subtotal.toLocaleString("es-AR")}`;
-  descuentosEl.textContent = `- $${descuento.toLocaleString("es-AR")}`;
-  totalEl.textContent      = `$${(subtotal - descuento).toLocaleString("es-AR")}`;
-
+  if (!r.ok) throw new Error(`PATCH item ${r.status}`);
+  return r.json();
+}
+async function apiRemoveItem(itemId) {
+  const r = await fetch(`${API_BASE}/${encodeURIComponent(getUID())}/items/${encodeURIComponent(itemId)}`, { method: 'DELETE' });
+  if (!r.ok) throw new Error(`DELETE item ${r.status}`);
+  return r.json();
+}
+async function apiSetEntrega(modo) {
+  const r = await fetch(`${API_BASE}/${encodeURIComponent(getUID())}/entrega`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ modo })
+  });
+  if (!r.ok) throw new Error(`PATCH entrega ${r.status}`);
+  return r.json();
 }
 
-function cambiarCantidad(index, delta) {
-  carrito[index].cantidad += delta;
-  if (carrito[index].cantidad <= 0) {
-    carrito.splice(index, 1);
+// ---- Render ----
+function resolveImg(src) {
+  if (!src) return '/img/placeholder.png';
+  if (src.startsWith('http') || src.startsWith('/')) return src;
+  return '/img/' + src;
+}
+
+async function renderCarrito() {
+  try {
+    const data = await apiGetCart();
+    const items = Array.isArray(data.items) ? data.items : [];
+
+    // Modo de entrega
+    if (btnRetirar && btnDelivery) {
+      btnRetirar.classList.toggle('active', data.entrega?.modo === 'retiro');
+      btnDelivery.classList.toggle('active', data.entrega?.modo === 'delivery');
+    }
+
+    if (!items.length) {
+      listaCarrito.innerHTML = `
+        <div class="carrito-vacio">Tu carrito está vacío.</div>
+      `;
+      subtotalEl.textContent   = '$0';
+      descuentosEl.textContent = '- $0';
+      totalEl.textContent      = '$0';
+      return;
+    }
+
+   listaCarrito.innerHTML = items.map(it => `
+      <div class="cart-card" data-item="${it._id}">
+        <img class="cart-thumb" src="${resolveImg(it.imagen)}" alt="${it.nombre}">
+        <div class="cart-info">
+          <h3 class="cart-title">${it.nombre}</h3>
+          <p class="cart-meta">Precio: $${it.precio}</p>
+          <div class="controls">
+            <div class="qty">
+              <button type="button" data-qty="dec" aria-label="Restar" data-id="${it._id}">−</button>
+              <input id="cant-${it._id}" type="number" min="1" value="${it.cantidad}">
+              <button type="button" data-qty="inc" aria-label="Sumar" data-id="${it._id}">+</button>
+            </div>
+            <button class="btn-remove" data-remove="${it._id}">Quitar</button>
+          </div>
+        </div>
+        <div class="cart-price">$${it.precio * it.cantidad}</div>
+      </div>
+    `).join('');
+
+    // Listeners cantidad
+    items.forEach(it => {
+      const $input = document.getElementById(`cant-${it._id}`);
+      if ($input) {
+        $input.addEventListener('change', async (e) => {
+          const val = parseInt(e.target.value, 10);
+          if (!Number.isInteger(val) || val <= 0) { e.target.value = it.cantidad; return; }
+          try {
+            await apiUpdateItem(it._id, val);
+            await renderCarrito();
+          } catch (err) {
+            console.error(err);
+            alert('No se pudo actualizar la cantidad');
+            e.target.value = it.cantidad;
+          }
+        });
+      }
+    });
+
+    // Listener eliminar
+    listaCarrito.querySelectorAll('[data-remove]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        try {
+          await apiRemoveItem(btn.getAttribute('data-remove'));
+          await renderCarrito();
+        } catch (err) {
+          console.error(err);
+          alert('No se pudo quitar el producto');
+        }
+      });
+    });
+    // + / − cantidad (delegado sobre la lista)
+    listaCarrito.addEventListener('click', async (e) => {
+      const btn = e.target.closest('[data-qty]');
+      if (!btn) return;
+      const id = btn.getAttribute('data-id');
+      const input = document.getElementById(`cant-${id}`);
+      if (!input) return;
+
+      let val = parseInt(input.value, 10) || 1;
+      val += btn.dataset.qty === 'inc' ? 1 : -1;
+      if (val < 1) return; // si querés, acá podrías borrar el ítem
+
+      input.value = val;
+      try {
+        await apiUpdateItem(id, val);
+        await renderCarrito();
+      } catch (err) {
+        console.error(err);
+        // revertir si falla
+        input.value = Math.max(1, val - (btn.dataset.qty === 'inc' ? 1 : -1));
+      }
+    });
+
+
+    // Totales
+    const subtotal   = data.totales?.subtotal ?? items.reduce((a, it) => a + it.precio * it.cantidad, 0);
+    const descuentos = data.totales?.descuentos ?? 0;
+    const total      = data.totales?.total ?? (subtotal - descuentos);
+
+    subtotalEl.textContent   = `$${subtotal}`;
+    descuentosEl.textContent = `- $${descuentos}`;
+    totalEl.textContent      = `$${total}`;
+    // === Envío visible + "te faltan $X para envío gratis" ===
+    if (deliveryEl) {
+      const modo = data.entrega?.modo || 'retiro';
+      const meta = data.totales?.meta || {};
+      const base = subtotal - descuentos;                 // antes de sumar delivery
+      const falta = Math.max(0, (meta.deliveryMinFree ?? 0) - base);
+
+      if (modo === 'delivery') {
+        const envio = Number(data.totales?.delivery || 0);
+        deliveryEl.textContent = envio > 0 ? `+ $${envio}` : '$0';
+
+        if (deliveryNoteEl) {
+          if (envio === 0 && (meta.deliveryMinFree ?? 0) > 0) {
+            deliveryNoteEl.textContent = ' (¡envío gratis!)';
+          } else if (falta > 0) {
+            deliveryNoteEl.textContent = ` (te faltan $${falta} para envío gratis)`;
+          } else {
+            deliveryNoteEl.textContent = ' (envío a domicilio)';
+          }
+        }
+      } else {
+        deliveryEl.textContent = '$0';
+        if (deliveryNoteEl) deliveryNoteEl.textContent = ' (retiro en local)';
+      }
+
+      // (Opcional) Actualizar etiqueta del botón "Delivery"
+      if (btnDelivery) {
+        if (modo === 'delivery') {
+          btnDelivery.innerText = (falta > 0 && (meta.deliveryFee ?? 0) > 0)
+            ? `Delivery +$${meta.deliveryFee}`
+            : 'Delivery (gratis)';
+        } else {
+          btnDelivery.innerText = 'Delivery';
+        }
+      }
+    }
+
+  } catch (err) {
+    console.error(err);
+    listaCarrito.innerHTML = `<div class="error-box">No pudimos cargar tu carrito. Reintentá en unos segundos.</div>`;
+    subtotalEl.textContent   = '$0';
+    descuentosEl.textContent = '- $0';
+    totalEl.textContent      = '$0';
   }
-  guardarYActualizar();
 }
 
-function eliminar(index) {
-  carrito.splice(index, 1);
-  guardarYActualizar();
-}
-
-function guardarYActualizar() {
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  renderCarrito();
-}
-
-// Método de entrega
-btnRetirar.addEventListener("click", () => {
-  metodoEntrega = "retirar";
-  btnRetirar.classList.add("active");
-  btnDelivery.classList.remove("active");
+// ---- Botones modo de entrega ----
+btnRetirar?.addEventListener('click', async () => {
+  try { await apiSetEntrega('retiro'); await renderCarrito(); } catch (e) { console.error(e); }
 });
-btnDelivery.addEventListener("click", () => {
-  metodoEntrega = "delivery";
-  btnDelivery.classList.add("active");
-  btnRetirar.classList.remove("active");
+btnDelivery?.addEventListener('click', async () => {
+  try { await apiSetEntrega('delivery'); await renderCarrito(); } catch (e) { console.error(e); }
 });
 
-// Finalizar pedido
-btnFinalizar.addEventListener("click", () => {
-  if (carrito.length === 0) {
-    alert("El carrito está vacío.");
-    return;
-  }
-  window.location.href = "/checkout";
-});
-JSON.parse(localStorage.getItem('carrito'))
-
-renderCarrito();
+// ---- Init ----
+document.addEventListener('DOMContentLoaded', renderCarrito);

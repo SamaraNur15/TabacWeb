@@ -27,6 +27,12 @@
             <div class="detalle-precio">
                 <p>Subtotal: <span id="subtotal">$0</span></p>
                 <p>Descuentos aplicados: <span id="descuentos">- $0</span></p>
+                <div class="totals-row" id="row-delivery">
+                    <span class="label">Envío:</span>
+                    <small id="delivery-note" class="muted"></small>
+                    <span id="delivery" class="value">$0</span>
+                </div>
+                <style>.muted{opacity:.7;margin-left:.25rem;font-size:.95em}</style>
                 <p class="total-pagar">Total a pagar: <span id="total">$0</span></p>
             </div>
 
@@ -42,6 +48,8 @@
         </section>
     </main>
 </body>
-<script src="/api-comidas/public/carrito.js"></script>
+<script src="/user-id.js"></script>
+<script src="/src/carrito.js" defer></script>
+
 
 </html>
