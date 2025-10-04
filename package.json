@@ -1,26 +1,19 @@
 {
-<<<<<<< HEAD
-=======
-  "name": "api-comidas",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
->>>>>>> 5f9761b (Agregar estilos a productos y cambios en html)
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
-<<<<<<< HEAD
-    "mongoose": "^8.18.0",
-=======
-    "mongoose": "^8.17.1",
->>>>>>> 5f9761b (Agregar estilos a productos y cambios en html)
-    "nodemon": "^3.1.10"
-  }
+    "name": "api-comidas",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.1",
+        "express": "^5.1.0",
+        "mongoose": "^8.18.0",
+        "nodemon": "^3.1.10"
+    }
 }

@@ -1,35 +1,60 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const grids = {
-        salado: document.getElementById("grid-salado"),
-        dulce: document.getElementById("grid-dulce"),
-        bebidas: document.getElementById("grid-bebidas"),
-    };
+const gridSalado = document.getElementById("grid-salado");
+const gridDulce = document.getElementById("grid-dulce");
+const gridBebidas = document.getElementById("grid-bebidas");
+const btnBuscar = document.getElementById('btn-buscar');
+const inputBuscar = document.getElementById('input-busqueda');
 
-    function renderProducto(producto) {
-        return `
-      <article class="card-producto">
-        <img src="${producto.imagen}" alt="${producto.nombre}" class="card-producto__img"/>
-        <div class="card-producto__body">
-          <h3 class="card-producto__title">${producto.nombre}</h3>
-          <p class="card-producto__price">$${producto.precio}</p>
-          <a href="detalle.html?id=${producto._id}" class="btn-detalle">Ver detalle</a>
-        </div>
-      </article>
-    `;
+// Función para renderizar productos en un contenedor
+function renderProductos(productos, contenedor) {
+    contenedor.innerHTML = '';
+    productos.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'producto';
+        div.innerHTML = `
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <h3>${p.nombre}</h3>
+            <p>$${p.precio}</p>
+            <a href="carta.html?id=${p._id}">Ver detalle</a>
+        `;
+        contenedor.appendChild(div);
+    });
+}
+
+// Función para obtener productos con filtro
+async function fetchProductos(filtro = '') {
+    const res = await fetch('/api/comidas');
+    const data = await res.json();
+
+    let productosFiltrados = data;
+
+    if (filtro) {
+        const filtroLower = filtro.toLowerCase();
+
+        if (['salado', 'dulce', 'bebidas'].includes(filtroLower)) {
+            // Filtrar por categoría
+            productosFiltrados = data.filter(p => p.categoria.toLowerCase() === filtroLower);
+        } else {
+            // Filtrar por nombre de producto
+            productosFiltrados = data.filter(p => p.nombre.toLowerCase().includes(filtroLower));
+        }
     }
 
-    fetch("/api/comidas")
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                const cat = p.categoria ? p.categoria.toLowerCase() : '';
-                if (grids[cat]) grids[cat].innerHTML += renderProducto(p);
-            });
-        })
-        .catch(err => {
-            console.error("Error al cargar productos:", err);
-            Object.values(grids).forEach(grid => {
-                grid.innerHTML = '<p>No se pudieron cargar los productos. Intenta recargar la página.</p>';
-            });
-        });
+    // Limpiar grillas
+    gridSalado.innerHTML = '';
+    gridDulce.innerHTML = '';
+    gridBebidas.innerHTML = '';
+
+    // Renderizar en cada grilla según su categoría
+    renderProductos(productosFiltrados.filter(p => p.categoria.toLowerCase() === 'salado'), gridSalado);
+    renderProductos(productosFiltrados.filter(p => p.categoria.toLowerCase() === 'dulce'), gridDulce);
+    renderProductos(productosFiltrados.filter(p => p.categoria.toLowerCase() === 'bebidas'), gridBebidas);
+}
+
+// Mostrar todo al cargar la página
+fetchProductos();
+
+// Evento de búsqueda
+btnBuscar.addEventListener('click', () => {
+    const valor = inputBuscar.value.trim();
+    fetchProductos(valor);
 });
