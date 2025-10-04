@@ -1,48 +1,64 @@
-const { Router } = require('express');
-const router = Router();
-const Usuario = require('../models/Usuario'); // Asegurate que la ruta sea correcta
-
-// Ruta de prueba
-router.get('/test', (req, res) => {
-    res.json({ mensaje: 'Auth funcionando' });
-});
+const bcrypt = require('bcrypt');
+const express = require('express');
+const router = express.Router();
+const Usuario = require('../models/Usuario');
 
 // Registro
 router.post('/register', async(req, res) => {
-    const { nombre, email, password } = req.body;
+    const { nombre, email, password, telefono, direccion } = req.body;
+
+    if (!nombre || !email || !password) {
+        return res.status(400).json({ message: "Faltan datos" });
+    }
+
     try {
-        const usuarioExistente = await Usuario.findOne({ email });
-        if (usuarioExistente) return res.status(400).json({ message: 'Usuario ya existe' });
+        // Verificar si el usuario ya existe
+        const existingUser = await Usuario.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "Usuario ya existe" });
+        }
 
-        const nuevoUsuario = new Usuario({ nombre, email, password });
-        await nuevoUsuario.save();
-
-        res.status(201).json({
-            nombre: nuevoUsuario.nombre,
-            email: nuevoUsuario.email,
-            _id: nuevoUsuario._id
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const nuevoUsuario = await Usuario.create({
+            nombre,
+            email,
+            password: hashedPassword,
+            telefono,
+            direccion
         });
+        res.status(201).json({ message: "Usuario registrado con éxito ✅" });
     } catch (err) {
-        res.status(500).json({ message: 'Error del servidor' });
+        console.error(err);
+        res.status(500).json({ message: "Error al registrar usuario" });
     }
 });
 
 // Login
 router.post('/login', async(req, res) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: "Faltan datos" });
+    }
+
     try {
         const usuario = await Usuario.findOne({ email });
-        if (!usuario || usuario.password !== password) {
-            return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+        if (!usuario) {
+            return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
         }
 
-        res.json({
-            nombre: usuario.nombre,
-            email: usuario.email,
-            _id: usuario._id
-        });
+        const passwordMatch = await bcrypt.compare(password, usuario.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
+        }
+
+        // Opcional: eliminar password antes de enviar la info al cliente
+        const { password: pwd, ...userData } = usuario.toObject();
+
+        res.status(200).json(userData);
     } catch (err) {
-        res.status(500).json({ message: 'Error del servidor' });
+        console.error(err);
+        res.status(500).json({ message: "Error al iniciar sesión" });
     }
 });
 

@@ -1,8 +1,8 @@
-document.getElementById("form-login").addEventListener("submit", async(e) => {
+document.querySelector(".login-box form").addEventListener("submit", async(e) => {
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.querySelector(".login-box input[type='email']").value;
+    const password = document.querySelector(".login-box input[type='password']").value;
 
     try {
         const res = await fetch("/api/auth/login", {
@@ -12,14 +12,15 @@ document.getElementById("form-login").addEventListener("submit", async(e) => {
         });
 
         const data = await res.json();
-        console.log(data); // Para debug
+        console.log(data);
 
         if (res.ok) {
-            // Guardamos directamente lo que devuelve el backend
+            // Guardar usuario en localStorage
             localStorage.setItem("usuario", JSON.stringify(data));
-            window.location.href = "index.html"; // Redirige al inicio
+            // Redirigir a la carta
+            window.location.href = "../carta.html";
         } else {
-            alert(data.message || "Credenciales incorrectas ❌");
+            alert(data.message || "Usuario o contraseña incorrectos ❌");
         }
     } catch (error) {
         alert("Error al conectar con el servidor");

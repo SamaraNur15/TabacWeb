@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-// Middlewares
+// Middlewares para leer JSON y formularios URL-encoded
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Conexión a MongoDB
@@ -25,7 +26,7 @@ const comidaRoutes = require('./routes/comidaRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/comidas', comidaRoutes);
 
-// Página inicial
+// Página inicial (productos)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'productos.html'));
 });
