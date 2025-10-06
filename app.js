@@ -23,11 +23,13 @@ mongoose.connect(process.env.MONGO_URI, {
 const authRoutes = require('./routes/authRoutes');
 const comidaRoutes = require('./routes/comidaRoutes');
 const carritoRoutes = require('./routes/carritoRoutes');
+const pagoRoutes = require('./routes/pagoRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/comidas', comidaRoutes);
 app.use('/api/carrito', carritoRoutes);
-
+app.use('/api/pagos', pagoRoutes);
+    
 // Página inicial (productos)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'productos.html'));
