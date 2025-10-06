@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>¡Gracias por tu compra!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;color:#eee;background:#121212;margin:0}
+    .wrap{max-width:900px;margin:24px auto;padding:0 16px}
+    .panel{background:#1f1f1f;border-radius:14px;padding:16px 18px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+    h1{font-size:1.6rem;margin:.5rem 0 1rem}
+    .items{display:grid;gap:8px;margin:12px 0}
+    .row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+    .muted{opacity:.7}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h1 id="title">¡Gracias!</h1>
+      <div id="info" class="muted"></div>
+      <div id="lista" class="items"></div>
+      <div class="row"><div>Subtotal</div><div id="sub">$0</div></div>
+      <div class="row"><div class="muted">Descuentos</div><div id="desc">- $0</div></div>
+      <div class="row"><div>Envío</div><div id="envio">$0</div></div>
+      <div class="row"><div><strong>Total</strong></div><div id="total"><strong>$0</strong></div></div>
+      <p style="margin-top:12px"><a href="/carta.html">Seguir comprando</a></p>
+    </div>
+  </div>
+
+  <script src="/src/gracias.js" defer></script>
+</body>
+</html>

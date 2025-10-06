@@ -45,6 +45,10 @@
             <div class="acciones-carrito">
                 <button id="btn-seguir-comprando" class="btn-secundario">Seguir comprando</button>
                 <button id="finalizar-pedido" class="btn-finalizar">Finalizar pedido</button>
+                <script>
+                    document.getElementById('finalizar-pedido')
+                    ?.addEventListener('click', () => window.location.href = '/checkout.html');
+                </script>
             </div>
             <script>
                 document.getElementById("btn-seguir-comprando").addEventListener("click", function() {
@@ -54,8 +58,8 @@
         </section>
     </main>
 
-    <script src="./user-id.js"></script>
-    <script src="./carrito.js" defer></script>
+    <script src="user-id.js"></script>
+    <script src="src/carrito.js" defer></script>
 </body>
 
 </html>

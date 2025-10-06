@@ -1,13 +1,27 @@
 // ========= Config / utils =========
 console.log('[carta.api.js] cargado');
+// === Helpers para carrito por API ===
+function getUID() {
+  try {
+    if (typeof window.getUserId === 'function') return window.getUserId();
+    let id = localStorage.getItem('userId');
+    if (!id) { id = 'anon-1'; localStorage.setItem('userId', id); }
+    return id;
+  } catch { return 'anon-1'; }
+}
 
-const getUID = () => {
-    let saved = localStorage.getItem('userId');
-    if (saved) return saved;
-    const nuevo = 'anon-1';
-    localStorage.setItem('userId', nuevo);
-    return nuevo;
-};
+async function addToCartApi(productoId, cantidad = 1) {
+  if (!productoId) throw new Error('Falta productoId');
+  const r = await fetch(`/api/carrito/${encodeURIComponent(getUID())}/items`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ productoId, cantidad: Number(cantidad) || 1 })
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+
 
 function resolveImgPath(src) {
     if (!src) return '/img/placeholder.png';
@@ -37,7 +51,31 @@ function setCarrito(carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('[data-add], .btn-add');
+  if (!btn) return;
+
+  // tomamos id del botón o del <article>
+  const card = btn.closest('article');
+  const productoId = btn.dataset.add || card?.dataset.id;
+
+  if (!productoId) {
+    console.error('No encontré productoId en data-add ni data-id');
+    return;
+  }
+
+  try {
+    await addToCartApi(productoId, 1);
+    const nombre = (btn.dataset.nombre || card?.dataset?.nombre || 'Producto');
+    if (typeof mostrarToast === 'function') mostrarToast(`${nombre} agregado al carrito`);
+    console.log('[carrito] agregado', productoId);
+  } catch (err) {
+    console.error(err);
+    alert('No se pudo agregar al carrito.');
+  }
+});
+
+/*document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-add]');
     if (!btn) return;
 
@@ -46,9 +84,7 @@ document.addEventListener('click', (e) => {
     const precio = Number(btn.closest('article').dataset.precio || 0);
     const imagen = btn.closest('article').dataset.imagen || '/img/placeholder.png';
 
-    // Usamos la función global del carrito
-    window.addOrUpdateItem(productoId, nombre, precio, imagen, 1);
-});
+});*/
 
 function updateCartBadge() {
     const badge = document.querySelector('[data-cart-badge]');
@@ -190,7 +226,7 @@ function cardHTML(item) {
 }
 
 // ========= Click en “+” (delegación) =========
-document.addEventListener('click', (e) => {
+/*document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-add]');
     if (!btn) return;
 
@@ -200,7 +236,7 @@ document.addEventListener('click', (e) => {
     const imagen = btn.closest('article').dataset.imagen || '/img/placeholder.png';
 
     addToCartLocal({ id: productoId, nombre, precio, imagen });
-});
+});*/
 
 // ========= Errores =========
 function showError(t) {
