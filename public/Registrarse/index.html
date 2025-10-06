@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | Caffé Tabac</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="nav-principal">
+        <button id="abrir-menu" class="btn-menu" aria-label="Abrir menú">
+            <span class="icono-menu"></span>
+            <i class="fa-solid fa-leaf icono-hoja"></i>
+        </button>
+        <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+            <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+            <nav class="menu-navegacion">
+                <ul>
+                    <li><a href="../index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                    <li><a href="../carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                    <li><a href="../index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+                    <li><a href="../favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                    <li><a href="../quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                    <li><a href="../contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                    <li><a href="../calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+    </nav>
+
+    <div class="contenedor-principal">
+        <div class="panel-izquierdo">
+            <h2>¿Ya tienes una cuenta?</h2>
+            <p>Inicia sesión para acceder a todas las funciones</p>
+            <a href="../Iniciar Sesion/index.html" class="btn-blanco">Iniciar Sesión</a>
+        </div>
+
+        <div class="panel-derecho">
+            <h2>Registrarse</h2>
+            <form id="form-registro">
+                <input type="text" placeholder="Nombre Completo" id="nombre" required>
+                <input type="email" placeholder="Correo Electrónico" id="email" required>
+                <input type="password" placeholder="Contraseña" id="password" required minlength="6">
+                <input type="tel" placeholder="Teléfono" id="telefono" required pattern="[0-9]+">
+                <input type="text" placeholder="Dirección de Entrega" id="direccion" required>
+                <button type="submit" class="btn-registrarse">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    
+<script src="registro.js" defer></script>
+
+</body>
+
+</html>

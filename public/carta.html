@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carta | Caffé Tabac</title>
+    <link rel="stylesheet" href="carta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Header existente de tu sitio (logo + nav) -->
+    <nav class="nav-principal">
+        <div class="nav-izq">
+            <button id="abrir-menu" class="btn-menu" aria-label="Abrir carta">
+                <span class="icono-menu"></span>
+                <i class="fa-solid fa-leaf icono-hoja"></i>
+            </button>
+            <aside id="menu-lateral" class="menu-lateral" aria-hidden="true">
+                <button id="cerrar-menu" class="btn-cerrar" aria-label="Cerrar carta">✕</button>
+                <nav class="menu-navegacion">
+                    <ul>
+                        <li><a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                        <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-book-open"></i> Carta</a></li>
+                        <li><a href="favoritos"><i class="fa-regular fa-heart"></i> Favorito</a></li>
+                        <li><a href="quienes-somos"><i class="fa-solid fa-users"></i> Quienes Somos</a></li>
+                        <li><a href="contacto"><i class="fa-solid fa-envelope"></i> Contactanos</a></li>
+                        <li><a href="calificanos"><i class="fa-regular fa-star"></i> Calificanos</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div id="fondo-oscuro" class="fondo-oscuro" hidden></div>
+            <a href="index.html" class="nav-inicio"><span class="icono-casa"><i class="fa-solid fa-house"></i></span> Inicio </a>
+        </div>
+        <div class="acciones-nav">
+            <a class="btn-login" href="Iniciar Sesion/index.html">Iniciar Sesión</a>
+            <button class="btn-carrito" aria-label="Carrito" id="btn-ir-carrito">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <script>
+                document.getElementById("btn-ir-carrito").addEventListener("click", function() {
+                    window.location.href = "carrito.html";
+                });
+            </script>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero de la carta -->
+        <section class="hero-carta">
+            <div class="container">
+                <h1 class="hero-carta__title">Nuestra carta</h1>
+                <p class="hero-carta__sub">Sabores árabes, clásicos de la casa y postres para cerrar perfecto.</p>
+            </div>
+        </section>
+
+        <!-- Filtros / controles -->
+        <section class="toolbar-carta">
+            <div class="container toolbar-carta__content">
+                <button class="chips-nav chips-prev" aria-label="Categorías anteriores">‹</button>
+                <div class="chips" role="tablist" aria-label="Categorías">
+                    <button class="chip is-active" role="tab" aria-selected="true" data-filter="todos">
+                        <i class="fa-solid fa-layer-group"></i> Todos
+                    </button>
+                    <button class="chip" role="tab" data-filter="salado"><i class="fa-solid fa-bowl-food"></i> Salado</button>
+                    <button class="chip" role="tab" data-filter="dulce"><i class="fa-solid fa-ice-cream"></i> Dulce</button>
+                    <button class="chip" role="tab" data-filter="bebidas"><i class="fa-solid fa-mug-hot"></i> Bebidas</button>
+                    <button class="chip" role="tab" data-filter="vegetariano"><i class="fa-solid fa-seedling"></i> Vegetariano</button>
+                    <button class="chip" role="tab" data-filter="picante"><i class="fa-solid fa-pepper-hot"></i> Picante</button>
+                </div>
+                <button class="chips-nav chips-next" aria-label="Categorías siguientes">›</button>
+                <div class="orden">
+                    <label for="ordenar">Ordenar</label>
+                    <select id="ordenar">
+                        <option value="recomendados">Recomendados</option>
+                        <option value="precio_asc">Precio: menor a mayor</option>
+                        <option value="precio_desc">Precio: mayor a menor</option>
+                        <option value="calificacion">Mejor calificados</option>
+                        <option value="tiempo">Más rápidos</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección SALADOS -->
+        <section class="bloque-categoria" id="salado">
+            <div class="container">
+                <h2 class="titulo-seccion">Especialidades saladas</h2>
+                <div class="grid-carta" id="grid-salado"></div>
+            </div>
+        </section>
+
+        <!-- Sección DULCES -->
+        <section class="bloque-categoria" id="dulce">
+            <div class="container">
+                <h2 class="titulo-seccion">Un toque de dulce</h2>
+                <div class="grid-carta" id="grid-dulce"></div>
+            </div>
+        </section>
+
+        <!-- Sección BEBIDAS -->
+        <section class="bloque-categoria" id="bebidas">
+            <div class="container">
+                <h2 class="titulo-seccion">Bebidas</h2>
+                <div class="grid-carta" id="grid-bebidas"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal producto -->
+    <div id="modal-producto" class="modal-producto" hidden role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+        <div class="modal-contenido">
+            <button id="cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar modal">✕</button>
+            <h2 id="titulo-modal" class="modal-titulo">Nombre Producto</h2>
+            <div class="selector-cantidad">
+                <label for="cantidad" class="label-cantidad">Unidades</label>
+                <div class="input-cantidad">
+                    <button id="restar" aria-label="Restar unidad">−</button>
+                    <span id="cantidad">1</span>
+                    <button id="sumar" aria-label="Sumar unidad">+</button>
+                </div>
+            </div>
+            <button id="btn-agregar" class="btn-agregar">
+                Agregar a mi pedido <span id="precio-total">$0</span>
+            </button>
+        </div>
+    </div>
+    <div id="modal-backdrop" class="modal-backdrop" hidden></div>
+
+    <footer class="footer-site">
+        <div class="container">
+            <p>© Caffé Tabac — Hecho con ❤️ en Jujuy</p>
+        </div>
+    </footer>
+
+
+
+    <!-- Script carrito integrado -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnAgregar = document.getElementById('btn-agregar');
+            if (!btnAgregar) return;
+
+            btnAgregar.addEventListener('click', () => {
+                const producto = {
+                    id: 'id-' + Date.now(), // id único por producto (puede reemplazar por tu id real)
+                    nombre: document.getElementById('titulo-modal').textContent,
+                    precio: parseInt(document.getElementById('precio-total').textContent.replace('$', '')),
+                    cantidad: parseInt(document.getElementById('cantidad').textContent),
+                    imagen: 'img/producto-placeholder.jpg' // reemplazar por la imagen real si la tienes
+                };
+
+                let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                const index = carrito.findIndex(p => p.id === producto.id);
+
+                if (index !== -1) {
+                    carrito[index].cantidad += producto.cantidad;
+                } else {
+                    carrito.push(producto);
+                }
+
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                alert(`${producto.nombre} agregado al carrito ✅`);
+            });
+        });
+    </script>   
+     <!-- Scripts existentes -->
+    <script src="src/carrusel.js"></script>
+    <script src="src/menu.js"></script>
+    <script src="src/categorias.js"></script>
+    <script src="src/carta.api.js" defer></script>
+    <script src="src/Acordeon.js"></script>
+    <script src="/user-id.js"></script>
+</body>
+
+</html>
