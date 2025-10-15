@@ -1,0 +1,41 @@
+.grid-carta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-producto {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: .2s;
+}
+
+.card-producto:hover {
+    transform: translateY(-5px);
+}
+
+.card-producto__img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-producto__body {
+    padding: 1rem;
+}
+
+.card-producto__price {
+    color: #009688;
+    font-weight: bold;
+}
+
+.btn-detalle {
+    display: inline-block;
+    background: #009688;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+}

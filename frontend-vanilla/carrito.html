@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito | Caffé Tabac</title>
+  <link rel="stylesheet" href="src/carrito.css"/>
+  <link rel="stylesheet" href="src/estilos.css"/>
+</head>
+<body>
+  <header class="logo-carrito">
+    <img src="img/logo-tabac.png" alt="Caffé Tabac">
+  </header>
+
+  <main class="contenedor-carrito">
+    <h1>Carrito de Compras</h1>
+    <div id="lista-carrito" class="lista-carrito"></div>
+
+    <section class="resumen-carrito">
+      <div class="metodo-entrega">
+        <button id="btn-retirar" class="btn-metodo active">Retirar en el local</button>
+        <button id="btn-delivery" class="btn-metodo">Delivery</button>
+      </div>
+
+      <div class="detalle-precio">
+        <p>Subtotal: <span id="subtotal">$0</span></p>
+        <p>Descuentos aplicados: <span id="descuentos">- $0</span></p>
+        <p class="total-pagar">Total a pagar: <span id="total">$0</span></p>
+      </div>
+
+      <div class="acciones-carrito">
+        <button id="btn-seguir-comprando" class="btn-secundario">Seguir comprando</button>
+        <button id="finalizar-pedido" class="btn-finalizar">Finalizar pedido</button>
+      </div>
+      <script>
+        document.getElementById("btn-seguir-comprando").addEventListener("click", function () {
+          window.location.href = "carta.html";
+        });
+      </script>
+    </section>
+  </main>  
+</body><script src="src/carrito.js"></script>
+</html>
